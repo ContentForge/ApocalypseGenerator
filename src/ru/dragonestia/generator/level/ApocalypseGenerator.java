@@ -11,6 +11,7 @@ import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
 import cn.nukkit.math.Vector3;
 import ru.dragonestia.generator.level.biome.AshBiome;
+import ru.dragonestia.generator.level.biome.CommonBiome;
 import ru.dragonestia.generator.level.populator.BedrockGradient;
 import ru.dragonestia.generator.level.populator.Ground;
 import ru.dragonestia.generator.level.populator.LavaPit;
@@ -89,7 +90,12 @@ public class ApocalypseGenerator extends Generator {
                 double h = simplex.getNoise2D((x + chunkX*16) / 100.0, (z + chunkZ*16) / 100.0);
                 int noise = 0;
                 while (random.nextFloat() < (biome instanceof AshBiome? 0.35f : 0.25f) && noise < 100) noise++;
-                int yMax = (int)(h * 10) + 60 + noise;
+                int yMax = (int)(h * 10) + 60;
+                if(biome instanceof CommonBiome){
+                    if(random.nextFloat() > 0.3) yMax = (yMax + 60 + 60) / 3;
+                    else yMax = (yMax + 60) / 2;
+                }
+                yMax += noise;
 
                 for(int y = 0; y < yMax; y++){
                     int blockId;
