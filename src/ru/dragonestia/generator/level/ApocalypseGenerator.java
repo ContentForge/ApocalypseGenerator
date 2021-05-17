@@ -11,6 +11,7 @@ import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
 import cn.nukkit.math.Vector3;
 import ru.dragonestia.generator.level.biome.AshBiome;
+import ru.dragonestia.generator.level.populator.BedrockGradient;
 import ru.dragonestia.generator.level.populator.Ground;
 import ru.dragonestia.generator.level.populator.LavaPit;
 import ru.dragonestia.generator.util.Pair;
@@ -63,6 +64,7 @@ public class ApocalypseGenerator extends Generator {
         populators = new Populator[]{
                 new Ground(nukkitRandom, random),
                 new LavaPit(simplex, random),
+                new BedrockGradient(),
         };
         biomes = new Fortune<>(random);
         biomes.items.addAll(Arrays.asList(
