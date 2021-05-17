@@ -1,11 +1,12 @@
 package ru.dragonestia.generator.level.biome;
 
 import cn.nukkit.Player;
-import cn.nukkit.level.biome.Biome;
 import ru.dragonestia.generator.factor.RadioactiveLevel;
 import ru.dragonestia.generator.level.ApocalypseGenerator;
 
-public class AshBiome extends Biome implements ApocalypseBiome {
+import java.util.Random;
+
+public class AshBiome extends ApocalypseBiome {
 
     @Override
     public String getName() {
@@ -36,6 +37,11 @@ public class AshBiome extends Biome implements ApocalypseBiome {
     @Override
     public RadioactiveLevel getRadioactiveLevel() {
         return RadioactiveLevel.HIGH;
+    }
+
+    @Override
+    public double getNoiseInterpolate(Random random, double noise) {
+        return noise * 1.3;
     }
 
 }

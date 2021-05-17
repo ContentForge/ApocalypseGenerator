@@ -10,8 +10,8 @@ import cn.nukkit.level.generator.noise.nukkit.d.SimplexD;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
 import cn.nukkit.math.Vector3;
+import ru.dragonestia.generator.level.biome.ApocalypseBiome;
 import ru.dragonestia.generator.level.biome.AshBiome;
-import ru.dragonestia.generator.level.biome.CommonBiome;
 import ru.dragonestia.generator.level.populator.BedrockGradient;
 import ru.dragonestia.generator.level.populator.Ground;
 import ru.dragonestia.generator.level.populator.LavaPit;
@@ -84,18 +84,15 @@ public class ApocalypseGenerator extends Generator {
 
         for(int x = 0; x < 16; x++){
             for(int z = 0; z < 16; z++){
-                Biome biome = generateBiome(x + chunkX*16, z + chunkZ*16);
+                ApocalypseBiome biome = (ApocalypseBiome) generateBiome(x + chunkX*16, z + chunkZ*16);
                 chunk.setBiome(x, z, biome);
 
                 double h = simplex.getNoise2D((x + chunkX*16) / 100.0, (z + chunkZ*16) / 100.0);
+                h = biome.getNoiseInterpolate(random, h);
                 int noise = 0;
                 while (random.nextFloat() < (biome instanceof AshBiome? 0.35f : 0.25f) && noise < 100) noise++;
                 int yMax = (int)(h * 10) + 60;
-                if(biome instanceof CommonBiome){
-                    if(random.nextFloat() > 0.3) yMax = (yMax + 60 + 60) / 3;
-                    else yMax = (yMax + 60) / 2;
-                }
-                yMax += noise;
+                yMax = biome.getHeightInterpolate(random, yMax) + noise;
 
                 for(int y = 0; y < yMax; y++){
                     int blockId;
