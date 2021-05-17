@@ -69,7 +69,7 @@ public class ApocalypseGenerator extends Generator {
         };
         biomes = new Fortune<>(random);
         biomes.items.addAll(Arrays.asList(
-                new Pair<>(Biome.getBiome(COMMON_BIOME), 15),
+                new Pair<>(Biome.getBiome(COMMON_BIOME), 9),
                 new Pair<>(Biome.getBiome(ASH_BIOME), 5),
                 new Pair<>(Biome.getBiome(FIRE_BIOME), 7)
         ));
@@ -142,7 +142,7 @@ public class ApocalypseGenerator extends Generator {
     }
 
     private Biome generateBiome(int x, int z){
-        double noise = (simplex.getNoise2D(x / 1500.0, z / 1500.0) + 1) / 2;
+        double noise = (simplex.getNoise2D(x / 2000.0, z / 2000.0) + 1) / 2;
         return biomes.roll((int)(biomesWeight * noise));
     }
 
