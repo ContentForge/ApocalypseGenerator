@@ -1,8 +1,8 @@
-package ru.dragonestia.generator.level.biome;
+package ru.dragonestia.apocalypse.level.biome;
 
 import cn.nukkit.Player;
 import cn.nukkit.level.biome.Biome;
-import ru.dragonestia.generator.factor.RadioactiveLevel;
+import ru.dragonestia.apocalypse.factor.RadioactiveLevel;
 
 import java.util.Random;
 

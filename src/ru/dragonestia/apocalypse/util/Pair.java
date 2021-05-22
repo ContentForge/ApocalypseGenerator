@@ -1,4 +1,4 @@
-package ru.dragonestia.generator.util;
+package ru.dragonestia.apocalypse.util;
 
 public class Pair<T, V> {
 

@@ -1,7 +1,7 @@
-package ru.dragonestia.generator.level.populator.cluster;
+package ru.dragonestia.apocalypse.level.populator.cluster;
 
 import cn.nukkit.item.Item;
-import ru.dragonestia.generator.level.biome.ApocalypseBiome;
+import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 
 public interface Cluster {
 

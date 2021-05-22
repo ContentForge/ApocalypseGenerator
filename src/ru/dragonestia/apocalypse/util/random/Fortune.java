@@ -1,6 +1,6 @@
-package ru.dragonestia.generator.util.random;
+package ru.dragonestia.apocalypse.util.random;
 
-import ru.dragonestia.generator.util.Pair;
+import ru.dragonestia.apocalypse.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ru.dragonestia.generator.listener;
+package ru.dragonestia.apocalypse.listener;
 
 import cn.nukkit.block.Block;
 import cn.nukkit.event.EventHandler;
@@ -10,8 +10,8 @@ import cn.nukkit.level.Level;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.network.protocol.DataPacket;
 import cn.nukkit.network.protocol.StartGamePacket;
-import ru.dragonestia.generator.level.biome.ApocalypseBiome;
-import ru.dragonestia.generator.level.populator.cluster.Cluster;
+import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
+import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
 
 public class MainListener implements Listener {
 

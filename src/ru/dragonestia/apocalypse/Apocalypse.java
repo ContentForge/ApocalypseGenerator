@@ -1,14 +1,14 @@
-package ru.dragonestia.generator;
+package ru.dragonestia.apocalypse;
 
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.generator.Generator;
 import cn.nukkit.plugin.PluginBase;
-import ru.dragonestia.generator.level.ApocalypseGenerator;
-import ru.dragonestia.generator.level.biome.CommonBiome;
-import ru.dragonestia.generator.level.biome.AshBiome;
-import ru.dragonestia.generator.level.biome.FireBiome;
-import ru.dragonestia.generator.level.populator.cluster.Cluster;
-import ru.dragonestia.generator.listener.MainListener;
+import ru.dragonestia.apocalypse.level.ApocalypseGenerator;
+import ru.dragonestia.apocalypse.level.biome.CommonBiome;
+import ru.dragonestia.apocalypse.level.biome.AshBiome;
+import ru.dragonestia.apocalypse.level.biome.FireBiome;
+import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
+import ru.dragonestia.apocalypse.listener.MainListener;
 
 public class Apocalypse extends PluginBase {
 

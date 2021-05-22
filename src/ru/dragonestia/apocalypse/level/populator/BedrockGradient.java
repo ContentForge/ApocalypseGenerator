@@ -1,4 +1,4 @@
-package ru.dragonestia.generator.level.populator;
+package ru.dragonestia.apocalypse.level.populator;
 
 import cn.nukkit.item.Item;
 import cn.nukkit.level.ChunkManager;

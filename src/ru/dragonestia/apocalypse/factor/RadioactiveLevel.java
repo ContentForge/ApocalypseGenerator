@@ -1,4 +1,4 @@
-package ru.dragonestia.generator.factor;
+package ru.dragonestia.apocalypse.factor;
 
 import java.util.Random;
 

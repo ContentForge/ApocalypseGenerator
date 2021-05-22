@@ -1,12 +1,12 @@
-package ru.dragonestia.generator.level.populator;
+package ru.dragonestia.apocalypse.level.populator;
 
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
-import ru.dragonestia.generator.level.biome.ApocalypseBiome;
-import ru.dragonestia.generator.level.populator.cluster.Cluster;
+import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
+import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
 
 import java.util.Random;
 

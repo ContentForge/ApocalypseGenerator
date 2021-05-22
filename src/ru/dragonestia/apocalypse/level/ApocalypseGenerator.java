@@ -1,4 +1,4 @@
-package ru.dragonestia.generator.level;
+package ru.dragonestia.apocalypse.level;
 
 import cn.nukkit.item.Item;
 import cn.nukkit.level.ChunkManager;
@@ -10,15 +10,15 @@ import cn.nukkit.level.generator.noise.nukkit.d.SimplexD;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
 import cn.nukkit.math.Vector3;
-import ru.dragonestia.generator.Apocalypse;
-import ru.dragonestia.generator.level.biome.ApocalypseBiome;
-import ru.dragonestia.generator.level.biome.AshBiome;
-import ru.dragonestia.generator.level.populator.BedrockGradient;
-import ru.dragonestia.generator.level.populator.Ground;
-import ru.dragonestia.generator.level.populator.LavaPit;
-import ru.dragonestia.generator.level.populator.Ores;
-import ru.dragonestia.generator.util.Pair;
-import ru.dragonestia.generator.util.random.Fortune;
+import ru.dragonestia.apocalypse.Apocalypse;
+import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
+import ru.dragonestia.apocalypse.level.biome.AshBiome;
+import ru.dragonestia.apocalypse.level.populator.BedrockGradient;
+import ru.dragonestia.apocalypse.level.populator.Ground;
+import ru.dragonestia.apocalypse.level.populator.LavaPit;
+import ru.dragonestia.apocalypse.level.populator.Ores;
+import ru.dragonestia.apocalypse.util.Pair;
+import ru.dragonestia.apocalypse.util.random.Fortune;
 
 import java.util.Arrays;
 import java.util.HashMap;

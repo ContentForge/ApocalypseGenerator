@@ -1,4 +1,4 @@
-package ru.dragonestia.generator.level.populator;
+package ru.dragonestia.apocalypse.level.populator;
 
 import cn.nukkit.item.Item;
 import cn.nukkit.level.ChunkManager;
@@ -6,7 +6,7 @@ import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.noise.nukkit.d.SimplexD;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
-import ru.dragonestia.generator.util.Pair;
+import ru.dragonestia.apocalypse.util.Pair;
 
 import java.util.Random;
 
