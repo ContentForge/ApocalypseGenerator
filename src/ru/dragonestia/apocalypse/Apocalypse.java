@@ -6,8 +6,8 @@ import cn.nukkit.level.Level;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.generator.Generator;
 import cn.nukkit.plugin.PluginBase;
-import ru.dragonestia.apocalypse.chat.ChatManager;
-import ru.dragonestia.apocalypse.chat.Radio;
+import ru.dragonestia.apocalypse.player.PlayerManager;
+import ru.dragonestia.apocalypse.player.PlayerData;
 import ru.dragonestia.apocalypse.commands.ItemDataCommand;
 import ru.dragonestia.apocalypse.commands.RadioCommand;
 import ru.dragonestia.apocalypse.commands.SendRadioCommand;
@@ -33,7 +33,7 @@ public class Apocalypse extends PluginBase {
     private static Apocalypse instance;
     public Cluster[] clusters;
     public final String contentPath = "plugins/Hardcore/";
-    private final ChatManager chatManager = new ChatManager(this);
+    private final PlayerManager playerManager = new PlayerManager(this);
     private Level gameLevel;
     private final GlobalEvents globalEvents = new GlobalEvents(this);
 
@@ -84,7 +84,7 @@ public class Apocalypse extends PluginBase {
         gameLevel = getServer().getDefaultLevel();
 
         for(Player player: getServer().getOnlinePlayers().values()){
-            chatManager.initPlayer(player);
+            playerManager.initPlayer(player);
         }
 
         globalEvents.start();
@@ -92,15 +92,15 @@ public class Apocalypse extends PluginBase {
 
     @Override
     public void onDisable() {
-        chatManager.unloadAllRadio();
+        playerManager.unloadAllRadio();
     }
 
     public static Apocalypse getInstance() {
         return instance;
     }
 
-    public ChatManager getChatManager() {
-        return chatManager;
+    public PlayerManager getPlayerManager() {
+        return playerManager;
     }
 
     public GlobalEvents getGlobalEvents() {
@@ -120,8 +120,8 @@ public class Apocalypse extends PluginBase {
                 .setLine(4, "")
                 .setLine(5, "§9vk.com/dragonestia")
                 .addUpdater(sb -> {
-                    Radio radio = chatManager.get(player);
-                    if (radio == null) return;
+                    PlayerData playerData = playerManager.get(player);
+                    if (playerData == null) return;
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");
                     String eventMessage = globalEvents.currentEvent.generateTitleMessage(player, globalEvents.time);
                     Biome biome = Biome.getBiome(player.getLevel().getBiomeId(player.getFloorX(), player.getFloorZ()));
@@ -130,7 +130,7 @@ public class Apocalypse extends PluginBase {
                         rad = radGround = ((ApocalypseBiome) biome).getRadioactiveLevel().getGroundDose();
                     }
 
-                    sb.setLine(1, "§fR: §2§l" + (radio.getChannel() / 10.0) + "Мгц§r§f  C: §g§l" + radio.getCharge() + "EU§r§f  D: §l§3" + (radio.getDistance() / 1000.0) + "км")
+                    sb.setLine(1, "§fR: §2§l" + (playerData.getRadioChannel() / 10.0) + "Мгц§r§f  C: §g§l" + playerData.getRadioCharge() + "EU§r§f  D: §l§3" + (playerData.getRadioDistance() / 1000.0) + "км")
                             .setLine(2, "§fРадиация: §g§l" + decimalFormat.format(rad) +" мР/с§f |§r Фон: §l§e" + decimalFormat.format(radGround) + " мР/с")
                             .setLine(3, (eventMessage == null) ? "  " : eventMessage);
                 }, 1).show();

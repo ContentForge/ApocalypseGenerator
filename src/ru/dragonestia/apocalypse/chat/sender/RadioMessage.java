@@ -1,7 +1,7 @@
 package ru.dragonestia.apocalypse.chat.sender;
 
 import cn.nukkit.Player;
-import ru.dragonestia.apocalypse.chat.Radio;
+import ru.dragonestia.apocalypse.player.PlayerData;
 
 public interface RadioMessage {
 
@@ -9,7 +9,7 @@ public interface RadioMessage {
 
     float getQuality(float factor);
 
-    float getLost(Radio target);
+    float getLost(PlayerData target);
 
     String getSender(Player target);
 

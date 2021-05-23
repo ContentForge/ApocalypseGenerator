@@ -45,23 +45,23 @@ public class GlobalEvents {
         time--;
         String msg = currentEvent.getNoticeEndMessage();
         if(time == NOTICE_PERIOD+10 && msg != null){
-            main.getChatManager().sendMessage(msg);
+            main.getPlayerManager().sendMessage(msg);
         }
         msg = nextEvent.getNoticeStartMessage();
         if(time == NOTICE_PERIOD-10 && msg != null){
-            main.getChatManager().sendMessage(msg);
+            main.getPlayerManager().sendMessage(msg);
         }
 
         if(time <= 0){
             msg = currentEvent.getEndMessage();
-            if(msg != null) main.getChatManager().sendMessage(msg);
+            if(msg != null) main.getPlayerManager().sendMessage(msg);
 
             currentEvent = nextEvent;
             time = currentEvent.getPeriod();
             currentEvent.init();
 
             msg = currentEvent.getStartMessage();
-            if(msg != null) main.getChatManager().sendMessage(msg);
+            if(msg != null) main.getPlayerManager().sendMessage(msg);
 
             if(!currentEvent.equals(defaultEvent)){
                 nextEvent = defaultEvent;

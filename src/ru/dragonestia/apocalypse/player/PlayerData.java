@@ -1,59 +1,60 @@
-package ru.dragonestia.apocalypse.chat;
+package ru.dragonestia.apocalypse.player;
 
 import cn.nukkit.Player;
 import cn.nukkit.utils.Config;
-import ru.dragonestia.apocalypse.Apocalypse;
 import ru.dragonestia.apocalypse.chat.sender.RadioMessage;
 
-import java.util.Random;
-
-public class Radio {
+public class PlayerData {
 
     public static final short MAX_CHARGE = 200;
     public static final float SAVE_CHANCE = 0.7F;
     private final static char[] BAD_CHARS = {'@', '#', '$', '^', '*', '~', 'Ω', 'Σ', 'ζ', 'λ', 'ψ', '∀', '∂', 'ℶ'};
 
     private final Player player;
-    private final ChatManager chatManager;
+    private final PlayerManager playerManager;
     private short distance;
     private short maxDistance;
     private float quality;
     private short charge;
     private short channel;
 
-    public Radio(Player player, ChatManager chatManager){
+    public PlayerData(Player player, PlayerManager playerManager){
         this.player = player;
-        this.chatManager = chatManager;
+        this.playerManager = playerManager;
 
         Config config = getData();
-        distance = config.exists("distance")? ((short) config.getInt("distance")) : 1000;
-        maxDistance = config.exists("max_distance")? ((short) config.getInt("max_distance")) : 1000;
-        quality = config.exists("quality")? ((float) config.getDouble("quality")) : 0.5F;
-        charge = config.exists("charge")? ((short) config.getInt("charge")) : 50;
-        channel = config.exists("channel")? ((short) config.getInt("channel")) : 1000;
+        distance = config.exists("r_distance")? ((short) config.getInt("r_distance")) : 1000;
+        maxDistance = config.exists("r_max_distance")? ((short) config.getInt("r_max_distance")) : 1000;
+        quality = config.exists("r_quality")? ((float) config.getDouble("r_quality")) : 0.5F;
+        charge = config.exists("r_charge")? ((short) config.getInt("r_charge")) : 50;
+        channel = config.exists("r_channel")? ((short) config.getInt("r_channel")) : 1000;
     }
 
-    public void reset(){
+    public void resetAll(){
+        resetRadio();
+    }
+
+    public void resetRadio(){
         distance = 1000;
         maxDistance = 1000;
         quality = 0.5F;
         charge = 50;
-        channel = ChatManager.DEFAULT_CHANNEL;
+        channel = PlayerManager.DEFAULT_CHANNEL;
     }
 
     public void save(){
         Config config = getData();
-        config.set("distance", distance);
-        config.set("max_distance", maxDistance);
-        config.set("quality", quality);
-        config.set("charge", charge);
-        config.set("channel", channel);
+        config.set("r_distance", distance);
+        config.set("r_max_distance", maxDistance);
+        config.set("r_quality", quality);
+        config.set("r_charge", charge);
+        config.set("r_channel", channel);
         config.save();
     }
 
     public void onDeath(){
-        if(chatManager.random.nextFloat() > SAVE_CHANCE){
-            reset();
+        if(playerManager.random.nextFloat() > SAVE_CHANCE){
+            resetRadio();
             player.sendMessage("§eВсе ваши улучшения и настройки радио были сброшены.");
         }
     }
@@ -62,52 +63,52 @@ public class Radio {
         return player;
     }
 
-    public ChatManager getChatManager() {
-        return chatManager;
+    public PlayerManager getPlayerManager() {
+        return playerManager;
     }
 
-    public short getDistance() {
+    public short getRadioDistance() {
         return distance;
     }
 
-    public short getMaxDistance() {
+    public short getMaxRadioDistance() {
         return maxDistance;
     }
 
-    public float getQuality() {
+    public float getRadioQuality() {
         return quality;
     }
 
-    public short getCharge() {
+    public short getRadioCharge() {
         return charge;
     }
 
-    public short getChannel() {
+    public short getRadioChannel() {
         return channel;
     }
 
-    public Radio setDistance(short distance) {
+    public PlayerData setRadioDistance(short distance) {
         this.distance = distance;
         return this;
     }
 
-    public Radio setMaxDistance(short maxDistance) {
+    public PlayerData setMaxRadioDistance(short maxDistance) {
         this.maxDistance = maxDistance;
         return this;
     }
 
-    public Radio setQuality(float quality) {
+    public PlayerData setRadioQuality(float quality) {
         this.quality = quality;
         return this;
     }
 
-    public Radio setCharge(short charge) {
+    public PlayerData setRadioCharge(short charge) {
         this.charge = charge;
         if(this.charge > MAX_CHARGE) this.charge = MAX_CHARGE;
         return this;
     }
 
-    public Radio setChannel(short channel) {
+    public PlayerData setRadioChannel(short channel) {
         this.channel = channel;
         return this;
     }
@@ -123,7 +124,7 @@ public class Radio {
         char[] chars = text.toCharArray();
         for(int i = 0; i < chars.length; i++){
             if(chars[i] == ' ') continue;
-            if(chatManager.random.nextFloat() < lost) chars[i] = BAD_CHARS[chatManager.random.nextInt(BAD_CHARS.length)];
+            if(playerManager.random.nextFloat() < lost) chars[i] = BAD_CHARS[playerManager.random.nextInt(BAD_CHARS.length)];
         }
         sendMessage(message.getSender(player), new String(chars));
     }
@@ -134,8 +135,8 @@ public class Radio {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Radio){
-            return this.player.getName().equals(((Radio) obj).player.getName());
+        if(obj instanceof PlayerData){
+            return this.player.getName().equals(((PlayerData) obj).player.getName());
         }
         return false;
     }
@@ -146,7 +147,7 @@ public class Radio {
     }
 
     private Config getData(){
-        return new Config(chatManager.main.contentPath+"radios/"+player.getName().toLowerCase(), Config.YAML);
+        return new Config(playerManager.main.contentPath+"players/"+player.getName().toLowerCase(), Config.YAML);
     }
 
 }

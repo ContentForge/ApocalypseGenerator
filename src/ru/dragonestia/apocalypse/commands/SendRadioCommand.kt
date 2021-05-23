@@ -12,7 +12,7 @@ class SendRadioCommand(private val main: Apocalypse) : Command("r", "Отпра�
         if(args.isEmpty()) return false
 
         val message = args.joinToString(" ")
-        main.chatManager.sendMessage(main.chatManager.get(sender), message.replace(Regex("§."), ""))
+        main.playerManager.sendMessage(main.playerManager.get(sender), message.replace(Regex("§."), ""))
 
         return true
     }

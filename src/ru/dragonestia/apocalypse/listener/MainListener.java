@@ -54,7 +54,7 @@ public class MainListener implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
 
-        main.getChatManager().initPlayer(player);
+        main.getPlayerManager().initPlayer(player);
         main.initScoreboard(player);
     }
 
@@ -62,7 +62,7 @@ public class MainListener implements Listener {
     public void onQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
 
-        main.getChatManager().unloadRadio(player);
+        main.getPlayerManager().unloadRadio(player);
     }
 
 }

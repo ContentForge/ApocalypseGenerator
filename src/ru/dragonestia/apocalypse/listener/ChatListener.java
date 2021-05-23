@@ -23,7 +23,7 @@ public class ChatListener implements Listener {
         event.setCancelled(true);
 
         if(message.startsWith("!") || message.startsWith(".")){
-            main.getChatManager().sendMessage(main.getChatManager().get(player), message);
+            main.getPlayerManager().sendMessage(main.getPlayerManager().get(player), message);
             return;
         }
 

@@ -1,7 +1,7 @@
 package ru.dragonestia.apocalypse.chat.sender;
 
 import cn.nukkit.Player;
-import ru.dragonestia.apocalypse.chat.Radio;
+import ru.dragonestia.apocalypse.player.PlayerData;
 
 public class ServerMessage implements RadioMessage {
 
@@ -11,8 +11,8 @@ public class ServerMessage implements RadioMessage {
     }
 
     @Override
-    public float getLost(Radio target) {
-        return 1 - target.getQuality();
+    public float getLost(PlayerData target) {
+        return 1 - target.getRadioQuality();
     }
 
     @Override

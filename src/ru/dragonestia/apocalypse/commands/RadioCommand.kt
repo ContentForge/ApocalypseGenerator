@@ -5,7 +5,7 @@ import cn.nukkit.command.Command
 import cn.nukkit.command.CommandSender
 import cn.nukkit.item.Item
 import ru.dragonestia.apocalypse.Apocalypse
-import ru.dragonestia.apocalypse.chat.Radio
+import ru.dragonestia.apocalypse.player.PlayerData
 import ru.nukkitx.forms.elements.CustomForm
 import ru.nukkitx.forms.elements.ImageType
 import ru.nukkitx.forms.elements.SimpleForm
@@ -25,15 +25,15 @@ class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио"
     }
 
     private fun sendMainForm(player: Player){
-        val radio = main.chatManager.get(player)
+        val radio = main.playerManager.get(player)
 
         SimpleForm("Радио",
-                "Заряд: §l§3${radio.charge}/200EU§r\n" +
-                        "Дальность передатчика: §l§3${radio.distance}м§r\n" +
-                        "Максимальная дальность передатчика: §l§3${radio.maxDistance}м§r\n" +
-                        "Эффективность передатчика: §l§g${(radio.quality*100).toInt()} процентов§r\n" +
-                        "Эффективная дальность передатчика: §l§e${(radio.distance*radio.quality).toInt()}м§f/§g${(radio.maxDistance*radio.quality).toInt()}м§r\n" +
-                        "Выбранная волна: §l§2${radio.channel}МГц§r"
+                "Заряд: §l§3${radio.radioCharge}/200EU§r\n" +
+                        "Дальность передатчика: §l§3${radio.radioDistance}м§r\n" +
+                        "Максимальная дальность передатчика: §l§3${radio.maxRadioDistance}м§r\n" +
+                        "Эффективность передатчика: §l§g${(radio.radioQuality *100).toInt()} процентов§r\n" +
+                        "Эффективная дальность передатчика: §l§e${(radio.radioDistance *radio.radioQuality).toInt()}м§f/§g${(radio.maxRadioDistance *radio.radioQuality).toInt()}м§r\n" +
+                        "Выбранная волна: §l§2${radio.radioChannel}МГц§r"
         )
                 .addButton("Настройки", ImageType.PATH, "textures/ui/dragonestia/radio")
                 .addButton("Зарядить", ImageType.PATH, "textures/ui/dragonestia/refuel")
@@ -49,14 +49,14 @@ class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио"
                                 player.sendMessage("§cУ вас нет батареек для подзарядки.")
                                 return@send
                             }
-                            if(radio.charge >= 200){
+                            if(radio.radioCharge >= 200){
                                 player.sendMessage("§cРадио заряжено полностью.")
                                 return@send
                             }
-                            var newCharge = radio.charge + 50
+                            var newCharge = radio.radioCharge + 50
                             if(newCharge > 200) newCharge = 200
 
-                            radio.charge = newCharge.toShort()
+                            radio.radioCharge = newCharge.toShort()
                             inv.removeItem(item)
 
                             sendMainForm(player)
@@ -68,7 +68,7 @@ class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио"
                                 return@send
                             }
 
-                            radio.maxDistance = (radio.maxDistance + 1000).toShort()
+                            radio.maxRadioDistance = (radio.maxRadioDistance + 1000).toShort()
                             inv.removeItem(item)
 
                             sendMainForm(player)
@@ -80,13 +80,13 @@ class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио"
                                 return@send
                             }
 
-                            val newQuality = radio.quality + 0.1f
+                            val newQuality = radio.radioQuality + 0.1f
                             if(newQuality >= 1f){
                                 player.sendMessage("§cЭффективная дальность радио на максимальном уровне.")
                                 return@send
                             }
 
-                            radio.quality = newQuality
+                            radio.radioQuality = newQuality
                             inv.removeItem(item)
 
                             sendMainForm(player)
@@ -96,16 +96,16 @@ class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио"
                 }
     }
 
-    private fun sendSettingsForm(player: Player, radio: Radio){
-        val maxDistance = radio.maxDistance
+    private fun sendSettingsForm(player: Player, playerData: PlayerData){
+        val maxDistance = playerData.maxRadioDistance
         val minDistance = 100
         CustomForm("Настройка радио")
                 .addLabel("Выберите волну вещания и прослушки радио. Допустимые значения: §b${channelsRange.first}-${channelsRange.last}§f(§2${channelsRange.first / 10.0}-${channelsRange.last / 10.0}Мгц§f).\n" +
                         "Стандартная частота - §31000§f(§2100.0МГц)")
-                .addInput("Волна вещания", radio.channel.toString(), radio.channel.toString())
+                .addInput("Волна вещания", playerData.radioChannel.toString(), playerData.radioChannel.toString())
                 .addLabel("Для того чтобы регулировать дальность вашего вещания измените поле ниже. Чем ниже дальность вещания по сравнению с максимальной дальностью, тем меньше идет расход заряда радиопередатчика.\n" +
                         "Допустимое значение: §b${minDistance}-${maxDistance}§f(метров).")
-                .addInput("Дальность отправляемого сигнала", radio.distance.toString(), radio.distance.toString())
+                .addInput("Дальность отправляемого сигнала", playerData.radioDistance.toString(), playerData.radioDistance.toString())
                 .send(player) { _, _, data ->
                     if(data == null) return@send
 
@@ -129,8 +129,8 @@ class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио"
                         return@send
                     }
 
-                    radio.channel = channel.toShort()
-                    radio.distance = distance.toShort()
+                    playerData.radioChannel = channel.toShort()
+                    playerData.radioDistance = distance.toShort()
 
                     player.sendMessage("§eВы успешно изменили настройки радио!")
                 }

@@ -2,28 +2,28 @@ package ru.dragonestia.apocalypse.chat.sender;
 
 import cn.nukkit.Player;
 import ru.dragonestia.apocalypse.Apocalypse;
-import ru.dragonestia.apocalypse.chat.Radio;
+import ru.dragonestia.apocalypse.player.PlayerData;
 import ru.dragonestia.apocalypse.storms.defaults.RadioStorm;
 
 public class PlayerMessage implements RadioMessage {
 
-    private final Radio radio;
+    private final PlayerData playerData;
     private final Apocalypse main;
 
-    public PlayerMessage(Radio radio, Apocalypse main){
-        this.radio = radio;
+    public PlayerMessage(PlayerData playerData, Apocalypse main){
+        this.playerData = playerData;
         this.main = main;
     }
 
     @Override
     public float getQuality(float factor) {
-        return radio.getQuality() / factor;
+        return playerData.getRadioQuality() / factor;
     }
 
     @Override
-    public float getLost(Radio target) {
-        float radioDistance = radio.getDistance() * getQuality(main.getGlobalEvents().currentEvent instanceof RadioStorm? 30 : 1);
-        double distance = radio.getPlayer().distance(target.getPlayer());
+    public float getLost(PlayerData target) {
+        float radioDistance = playerData.getRadioDistance() * getQuality(main.getGlobalEvents().currentEvent instanceof RadioStorm? 30 : 1);
+        double distance = playerData.getPlayer().distance(target.getPlayer());
 
         if(radioDistance >= distance) return 0F;
 
@@ -33,7 +33,7 @@ public class PlayerMessage implements RadioMessage {
 
     @Override
     public String getSender(Player target) {
-        return target.isOp()? radio.getPlayer().getName() : DEFAULT_SENDER_NAME;
+        return target.isOp()? playerData.getPlayer().getName() : DEFAULT_SENDER_NAME;
     }
 
 }
