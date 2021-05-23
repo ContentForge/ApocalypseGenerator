@@ -115,8 +115,8 @@ public class Apocalypse extends PluginBase {
         ScoreboardManager.createScoreboard(player)
                 .setDisplayName("§c§lDrаgonestia§f - §4Hardcore")
                 .setLine(1, "§fРадио: §2§l???Мгц")
-                .setLine(2, "§fРадиация: §g§l0 мРентген/с")
-                .setLine(3, "§fФон.Радиация: §g§l0 мРентген/с")
+                .setLine(2, "§fРадиация: §g§l0 мР/с")
+                .setLine(3, "§fФон.Радиация: §g§l0 мР/с")
                 .setLine(4, " ")
                 .setLine(5, "")
                 .setLine(6, "§9vk.com/dragonestia")
@@ -134,7 +134,7 @@ public class Apocalypse extends PluginBase {
 
                     sb.setLine(1, "§fR: §2§l" + (playerData.getRadioChannel() / 10.0) + "Мгц§r§f  C: §g§l" + playerData.getRadioCharge() + "EU§r§f  D: §l§3" + (playerData.getRadioDistance() / 1000.0) + "км")
                             .setLine(2, "§fРадиация: §g§l" + decimalFormat.format(rad) +" мР/с")
-                            .setLine(3, "§fФон.Радиация: §g§l" + decimalFormat.format(radGround) + " мРентген/с")
+                            .setLine(3, "§fФон.Радиация: §g§l" + decimalFormat.format(radGround) + " мР/с")
                             .setLine(4, (eventMessage == null) ? "  " : eventMessage);
                 }, 1).show();
     }
