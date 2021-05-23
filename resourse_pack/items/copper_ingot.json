@@ -1,0 +1,6 @@
+{"format_version": "1.16.0", 
+"minecraft:item": 
+{"description": 
+{"identifier": "dragonestia:copper_ingot"}, 
+"components": {"minecraft:icon": "dragonestia:copper_ingot", 
+"minecraft:hand_equipped": false}}}

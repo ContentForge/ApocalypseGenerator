@@ -1,0 +1,12 @@
+{
+	"dragonestia.radiation": {
+    "category": "music",
+    "min_distance": 100.0,
+         "sounds" : [
+            "sounds/radiation/rad1",
+            "sounds/radiation/rad2",
+            "sounds/radiation/rad3",
+            "sounds/radiation/rad4"
+    ]
+  }
+}

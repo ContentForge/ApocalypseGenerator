@@ -1,0 +1,6 @@
+{"format_version": "1.16.0", 
+"minecraft:item": 
+{"description": 
+{"identifier": "dragonestia:copper_cluster"}, 
+"components": {"minecraft:icon": "dragonestia:copper_cluster", 
+"minecraft:hand_equipped": false}}}

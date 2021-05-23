@@ -1,0 +1,19 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "Dragonestia Hardcore",
+    "name": "Dragonestia Hardcore",
+    "uuid": "64c57966-7506-11eb-9439-0242ac130002",
+    "version": [1, 1, 2],
+    "min_engine_version": [ 1, 14, 0 ]
+  },
+  "modules": [
+    {
+      "description": "Dragonestia Hardcore",
+      "name": "Dragonestia Hardcore",
+      "type": "resources",
+      "uuid": "6b81dc0e-7506-11eb-9439-0242ac130002",
+      "version": [1, 1, 2]
+    }
+  ]
+}

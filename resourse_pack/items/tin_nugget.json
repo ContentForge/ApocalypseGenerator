@@ -1,0 +1,6 @@
+{"format_version": "1.16.0", 
+"minecraft:item": 
+{"description": 
+{"identifier": "dragonestia:tin_nugget"}, 
+"components": {"minecraft:icon": "dragonestia:tin_nugget", 
+"minecraft:hand_equipped": false}}}

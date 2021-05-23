@@ -1,0 +1,18 @@
+{"resource_pack_name": "Dragonestia", "texture_name": "atlas.items", "texture_data": {
+	"dragonestia:sulfur_cluster": {"textures": "textures/items/cluster/sulfur"}, 
+	"dragonestia:sulfur_dust": {"textures": "textures/items/dust/sulfur"}, 
+	"dragonestia:iron_cluster": {"textures": "textures/items/cluster/iron"}, 
+	"dragonestia:copper_cluster": {"textures": "textures/items/cluster/copper"}, 
+	"dragonestia:tin_cluster": {"textures": "textures/items/cluster/tin"}, 
+	"dragonestia:copper_ingot": {"textures": "textures/items/ingot/copper"}, 
+	"dragonestia:tin_ingot": {"textures": "textures/items/ingot/tin"}, 
+	"dragonestia:copper_nugget": {"textures": "textures/items/nugget/copper"}, 
+	"dragonestia:tin_nugget": {"textures": "textures/items/nugget/tin"}
+, "dragonestia:guide": {"textures": "textures/items/book/guide"}
+, "dragonestia:battery": {"textures": "textures/items/upgrade/battery"}
+, "dragonestia:chip": {"textures": "textures/items/upgrade/chip"}
+, "dragonestia:copper_wire": {"textures": "textures/items/upgrade/copper_wire"}
+, "dragonestia:scrap": {"textures": "textures/items/scrap"}
+, "dragonestia:cloth": {"textures": "textures/items/cloth"}
+, "dragonestia:plastic": {"textures": "textures/items/plastic"}
+}}
