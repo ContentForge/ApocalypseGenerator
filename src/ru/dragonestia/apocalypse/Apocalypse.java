@@ -85,6 +85,7 @@ public class Apocalypse extends PluginBase {
 
         for(Player player: getServer().getOnlinePlayers().values()){
             playerManager.initPlayer(player);
+            initScoreboard(player);
         }
 
         globalEvents.start();

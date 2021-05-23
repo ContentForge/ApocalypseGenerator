@@ -2,6 +2,8 @@ package ru.dragonestia.apocalypse.player;
 
 import cn.nukkit.Player;
 import cn.nukkit.item.Item;
+import cn.nukkit.level.Sound;
+import cn.nukkit.network.protocol.PlaySoundPacket;
 import cn.nukkit.utils.Config;
 import ru.dragonestia.apocalypse.chat.sender.RadioMessage;
 
@@ -179,6 +181,22 @@ public class PlayerData {
     public double getGroundRadiation(double rad){
         if(player.y < 60) rad = (player.y / 60) * rad;
         lastRadiationLevel = (lastRadiationLevel + rad * 3) / 4;
+
+        if(rad > 0.6){
+            PlaySoundPacket packet = new PlaySoundPacket();
+            packet.name = "dragonestia.radiation";
+            packet.volume = 0.2F;
+            packet.pitch = 1F;
+            packet.x = player.getFloorX();
+            packet.y = player.getFloorY();
+            packet.z = player.getFloorZ();
+
+            if(playerManager.random.nextFloat() > 0.35f) player.dataPacket(packet);
+            if(rad > 100) player.dataPacket(packet);
+            if(rad > 300)player.dataPacket(packet);
+            if(rad > 500)player.dataPacket(packet);
+        }
+
         return lastRadiationLevel;
     }
 
