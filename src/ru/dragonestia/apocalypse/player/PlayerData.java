@@ -1,6 +1,7 @@
 package ru.dragonestia.apocalypse.player;
 
 import cn.nukkit.Player;
+import cn.nukkit.item.Item;
 import cn.nukkit.utils.Config;
 import ru.dragonestia.apocalypse.chat.sender.RadioMessage;
 
@@ -17,6 +18,8 @@ public class PlayerData {
     private float quality;
     private short charge;
     private short channel;
+    private double radiation;
+    public double lastRadiationLevel = 0;
 
     public PlayerData(Player player, PlayerManager playerManager){
         this.player = player;
@@ -28,10 +31,13 @@ public class PlayerData {
         quality = config.exists("r_quality")? ((float) config.getDouble("r_quality")) : 0.5F;
         charge = config.exists("r_charge")? ((short) config.getInt("r_charge")) : 50;
         channel = config.exists("r_channel")? ((short) config.getInt("r_channel")) : 1000;
+        radiation = config.exists("rad")? config.getDouble("rad") : 0;
     }
 
     public void resetAll(){
         resetRadio();
+
+        radiation = 0;
     }
 
     public void resetRadio(){
@@ -49,10 +55,12 @@ public class PlayerData {
         config.set("r_quality", quality);
         config.set("r_charge", charge);
         config.set("r_channel", channel);
+        config.set("rad", radiation);
         config.save();
     }
 
     public void onDeath(){
+        radiation = 0;
         if(playerManager.random.nextFloat() > SAVE_CHANCE){
             resetRadio();
             player.sendMessage("§eВсе ваши улучшения и настройки радио были сброшены.");
@@ -148,6 +156,82 @@ public class PlayerData {
 
     private Config getData(){
         return new Config(playerManager.main.contentPath+"players/"+player.getName().toLowerCase(), Config.YAML);
+    }
+
+    public double getRadiationLevel(){
+        return radiation;
+    }
+
+    public double addRadiation(double count){
+        radiation += count;
+        return radiation;
+    }
+
+    public void reduceRadiationLevel(int count){
+        radiation -= count;
+        if(radiation < 0) radiation = 0;
+    }
+
+    public void giveRadiationEffects(){
+        //TODO: Добавить эффекты радиации
+    }
+
+    public double getGroundRadiation(double rad){
+        if(player.y < 60) rad = (player.y / 60) * rad;
+        lastRadiationLevel = (lastRadiationLevel + rad * 3) / 4;
+        return lastRadiationLevel;
+    }
+
+    public double handleRadiation(double rad){
+        double multiplier = 1;
+
+        //Шлем
+        switch (player.getInventory().getHelmet().getId()){
+            case Item.CHAIN_HELMET:
+                multiplier -= 0.6;
+                break;
+            case Item.DIAMOND_HELMET:
+            case Item.IRON_HELMET:
+                multiplier -= 0.2;
+                break;
+        }
+
+        //Нагрудник
+        switch (player.getInventory().getChestplate().getId()){
+            case Item.CHAIN_CHESTPLATE:
+                multiplier -= 0.2;
+                break;
+            case Item.DIAMOND_CHESTPLATE:
+            case Item.IRON_CHESTPLATE:
+                multiplier -= 0.1;
+                break;
+        }
+
+        //Штаны
+        switch (player.getInventory().getHelmet().getId()){
+            case Item.CHAIN_LEGGINGS:
+                multiplier -= 0.07;
+                break;
+            case Item.DIAMOND_LEGGINGS:
+            case Item.IRON_LEGGINGS:
+                multiplier -= 0.03;
+                break;
+        }
+
+        //Ботинки
+        switch (player.getInventory().getHelmet().getId()){
+            case Item.CHAIN_BOOTS:
+                multiplier -= 0.03;
+                break;
+            case Item.DIAMOND_BOOTS:
+            case Item.IRON_BOOTS:
+                multiplier -= 0.01;
+                break;
+        }
+
+        double result = multiplier * rad;
+        if(player.isSurvival()) radiation += result;
+        return result;
     }
 
 }

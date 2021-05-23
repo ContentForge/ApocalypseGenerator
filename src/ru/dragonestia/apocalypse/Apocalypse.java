@@ -116,9 +116,10 @@ public class Apocalypse extends PluginBase {
                 .setDisplayName("§c§lDrаgonestia§f - §4Hardcore")
                 .setLine(1, "§fРадио: §2§l???Мгц")
                 .setLine(2, "§fРадиация: §g§l0 мРентген/с")
-                .setLine(3, " ")
-                .setLine(4, "")
-                .setLine(5, "§9vk.com/dragonestia")
+                .setLine(3, "§fФон.Радиация: §g§l0 мРентген/с")
+                .setLine(4, " ")
+                .setLine(5, "")
+                .setLine(6, "§9vk.com/dragonestia")
                 .addUpdater(sb -> {
                     PlayerData playerData = playerManager.get(player);
                     if (playerData == null) return;
@@ -127,12 +128,14 @@ public class Apocalypse extends PluginBase {
                     Biome biome = Biome.getBiome(player.getLevel().getBiomeId(player.getFloorX(), player.getFloorZ()));
                     double rad = 0, radGround = 0;
                     if(biome instanceof ApocalypseBiome){
-                        rad = radGround = ((ApocalypseBiome) biome).getRadioactiveLevel().getGroundDose();
+                        radGround = playerData.getGroundRadiation(((ApocalypseBiome) biome).getRadioactiveLevel().getGroundDose());
+                        rad = playerData.handleRadiation(radGround);
                     }
 
                     sb.setLine(1, "§fR: §2§l" + (playerData.getRadioChannel() / 10.0) + "Мгц§r§f  C: §g§l" + playerData.getRadioCharge() + "EU§r§f  D: §l§3" + (playerData.getRadioDistance() / 1000.0) + "км")
-                            .setLine(2, "§fРадиация: §g§l" + decimalFormat.format(rad) +" мР/с§f |§r Фон: §l§e" + decimalFormat.format(radGround) + " мР/с")
-                            .setLine(3, (eventMessage == null) ? "  " : eventMessage);
+                            .setLine(2, "§fРадиация: §g§l" + decimalFormat.format(rad) +" мР/с")
+                            .setLine(3, "§fФон.Радиация: §g§l" + decimalFormat.format(radGround) + " мРентген/с")
+                            .setLine(4, (eventMessage == null) ? "  " : eventMessage);
                 }, 1).show();
     }
 
