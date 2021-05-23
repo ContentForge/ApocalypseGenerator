@@ -19,7 +19,7 @@ public enum RadioactiveLevel {
 
     public double getGroundDose(){
         int rad = random.nextInt(dose / 5) - (dose / 10);
-        double result = (dose + rad) / 10.0;
+        double result = (dose + rad) / 10.0 + (random.nextFloat() < 0.1? 1 : 0);
         return result < 0? 0 : result;
     }
 
