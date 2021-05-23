@@ -64,7 +64,7 @@ public class ApocalypseGenerator extends Generator {
         populators = new Populator[]{
                 new Ores(random, Apocalypse.getInstance().clusters),
                 new Ground(nukkitRandom, random),
-                new LavaPit(simplex, random),
+                new LavaPit(simplex, new SimplexD(nukkitRandom, 1F, 1F), random),
                 new UndergroundLava(random),
                 new BedrockGradient(),
         };
