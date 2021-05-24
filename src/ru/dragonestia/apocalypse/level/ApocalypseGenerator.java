@@ -13,6 +13,7 @@ import cn.nukkit.math.Vector3;
 import ru.dragonestia.apocalypse.Apocalypse;
 import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.biome.AshBiome;
+import ru.dragonestia.apocalypse.level.biome.CommonBiome;
 import ru.dragonestia.apocalypse.level.populator.*;
 import ru.dragonestia.apocalypse.util.Pair;
 import ru.dragonestia.apocalypse.util.random.Fortune;
@@ -39,6 +40,7 @@ public class ApocalypseGenerator extends Generator {
     private Populator[] populators;
     private Fortune<Biome> biomes;
     private int biomesWeight;
+    private SimplexD temp;
 
     public ApocalypseGenerator(){
         settings = new HashMap<>();
@@ -67,6 +69,7 @@ public class ApocalypseGenerator extends Generator {
                 new LavaPit(simplex, new SimplexD(nukkitRandom, 1F, 1F), random),
                 new UndergroundLava(random),
                 new BedrockGradient(),
+                new SectionPopulator(random, chunkManager),
         };
         biomes = new Fortune<>(random);
         biomes.items.addAll(Arrays.asList(
@@ -75,6 +78,7 @@ public class ApocalypseGenerator extends Generator {
                 new Pair<>(Biome.getBiome(FIRE_BIOME), 7)
         ));
         biomesWeight = biomes.getAllWeight() * 2;
+        temp = new SimplexD(nukkitRandom, 1F, 1F);
 
         nukkitRandom.setSeed("ЕБАНУТЬСЯ".hashCode());
     }
@@ -91,7 +95,7 @@ public class ApocalypseGenerator extends Generator {
                 double h = simplex.getNoise2D((x + chunkX*16) / 100.0, (z + chunkZ*16) / 100.0);
                 h = biome.getNoiseInterpolate(random, h);
                 int noise = 0;
-                while (random.nextFloat() < (biome instanceof AshBiome? 0.35f : 0.25f) && noise < 100) noise++;
+                while (random.nextFloat() < (biome instanceof AshBiome? 0.35f : (biome instanceof CommonBiome? 0.10f : 0.25f)) && noise < 100) noise++;
                 int yMax = (int)(h * 10) + 60;
                 yMax = biome.getHeightInterpolate(random, yMax) + noise;
 
