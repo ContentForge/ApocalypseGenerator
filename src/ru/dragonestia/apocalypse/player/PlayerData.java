@@ -124,6 +124,7 @@ public class PlayerData {
     }
 
     public void sendMessage(RadioMessage message, String text){
+        text = text.replaceAll("^[!.]", "");
         float lost = message.getLost(this);
         if(lost > 0.75f) return;
         if(lost <= 0){
@@ -140,6 +141,7 @@ public class PlayerData {
     }
 
     private void sendMessage(String senderName, String message){
+        playSound("dragonestia.radio.message", 0.3F, 1F);
         player.sendMessage("§c§l["+senderName+"]§r§7 "+message+"§к");
     }
 
