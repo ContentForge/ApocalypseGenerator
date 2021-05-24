@@ -251,6 +251,7 @@ public class PlayerData {
 
         double result = multiplier * rad;
         if(player.isSurvival()) radiation += result;
+        reduceRadiationLevel(playerManager.random.nextInt(1) + 1);
         return result;
     }
 
