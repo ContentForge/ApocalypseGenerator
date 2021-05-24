@@ -183,6 +183,7 @@ public class PlayerData {
     public double getGroundRadiation(double rad){
         if(player.y < 60 && player.y > 25) rad += (0.1 - rad) * (1 - (player.y - 35) / 24);
         else if(player.y <= 35) rad = player.y < 25? 0 : 0.1;
+        if(rad < 0) rad = 0;
         lastRadiationLevel = (lastRadiationLevel + rad * 3) / 4;
 
         if(rad > 0.6){
