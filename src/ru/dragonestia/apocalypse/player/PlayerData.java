@@ -128,7 +128,7 @@ public class PlayerData {
         float lost = message.getLost(this);
         if(lost > 0.75f) return;
         if(lost <= 0){
-            sendMessage(message.getSender(player), text);
+            sendMessage(message.getSender(player), text, 0);
             return;
         }
 
@@ -137,11 +137,11 @@ public class PlayerData {
             if(chars[i] == ' ') continue;
             if(playerManager.random.nextFloat() < lost) chars[i] = BAD_CHARS[playerManager.random.nextInt(BAD_CHARS.length)];
         }
-        sendMessage(message.getSender(player), new String(chars));
+        sendMessage(message.getSender(player), new String(chars), lost);
     }
 
-    private void sendMessage(String senderName, String message){
-        playSound("dragonestia.radio.message", 0.3F, 1F);
+    private void sendMessage(String senderName, String message, float lost){
+        playSound("dragonestia.radio.message", 0.3F, 1F - lost);
         player.sendMessage("§c§l["+senderName+"]§r§7 "+message+"§к");
     }
 
