@@ -90,7 +90,7 @@ public class Apocalypse extends PluginBase {
         }
 
         globalEvents.start();
-        getServer().getScheduler().scheduleRepeatingTask(new IllnessTask(this), 20 * 3);
+        getServer().getScheduler().scheduleRepeatingTask(new IllnessTask(this), 20 * 60 * 3);
     }
 
     @Override
