@@ -68,16 +68,8 @@ public class PlayerManager {
     }
 
     public void broadcastSound(String sound, float volume, float pitch){
-        PlaySoundPacket packet = new PlaySoundPacket();
-        packet.name = sound;
-        packet.volume = volume;
-        packet.pitch = pitch;
-
         for(PlayerData playerData: playerDatas){
-            packet.x = playerData.getPlayer().getFloorX();
-            packet.y = playerData.getPlayer().getFloorY();
-            packet.z = playerData.getPlayer().getFloorZ();
-            playerData.getPlayer().dataPacket(packet);
+            playerData.playSound(sound, volume, pitch);
         }
     }
 
