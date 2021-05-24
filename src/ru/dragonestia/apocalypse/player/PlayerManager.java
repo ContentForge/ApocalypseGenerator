@@ -12,7 +12,7 @@ import java.util.Random;
 public class PlayerManager {
 
     public static final short DEFAULT_CHANNEL = 1000;
-    private final HashSet<PlayerData> playerDatas = new HashSet<>();
+    public final HashSet<PlayerData> playerDatas = new HashSet<>();
     public final Apocalypse main;
     public final Random random = new Random();
 

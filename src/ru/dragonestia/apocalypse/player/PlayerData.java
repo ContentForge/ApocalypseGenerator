@@ -4,8 +4,11 @@ import cn.nukkit.Player;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.Sound;
 import cn.nukkit.network.protocol.PlaySoundPacket;
+import cn.nukkit.potion.Effect;
 import cn.nukkit.utils.Config;
 import ru.dragonestia.apocalypse.chat.sender.RadioMessage;
+
+import java.util.ArrayList;
 
 public class PlayerData {
 
@@ -177,7 +180,33 @@ public class PlayerData {
     }
 
     public void giveRadiationEffects(){
-        //TODO: Добавить эффекты радиации
+        if(radiation < 100_000) return;
+
+        ArrayList<Effect> effects = new ArrayList<>();
+        if (radiation < 250_000){
+            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(60));
+            effects.add(Effect.getEffect(Effect.POISON).setVisible(false).setDuration(10));
+            effects.add(Effect.getEffect(Effect.NAUSEA).setVisible(false).setDuration(10));
+        } else if(radiation < 400_000){
+            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(90).setAmplifier(1));
+            effects.add(Effect.getEffect(Effect.POISON).setVisible(false).setDuration(20).setAmplifier(1));
+            effects.add(Effect.getEffect(Effect.NAUSEA).setVisible(false).setDuration(30).setAmplifier(1));
+            effects.add(Effect.getEffect(Effect.SLOWNESS).setVisible(false).setDuration(120));
+            effects.add(Effect.getEffect(Effect.WEAKNESS).setVisible(false).setDuration(120));
+        } else if (radiation < 700_000){
+            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(120).setAmplifier(2));
+            effects.add(Effect.getEffect(Effect.WITHER).setVisible(false).setDuration(15).setAmplifier(1));
+            effects.add(Effect.getEffect(Effect.NAUSEA).setVisible(false).setDuration(35).setAmplifier(2));
+            effects.add(Effect.getEffect(Effect.SLOWNESS).setVisible(false).setDuration(220).setAmplifier(1));
+            effects.add(Effect.getEffect(Effect.WEAKNESS).setVisible(false).setDuration(220).setAmplifier(1));
+        } else {
+            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(150).setAmplifier(3));
+            effects.add(Effect.getEffect(Effect.WITHER).setVisible(false).setDuration(65).setAmplifier(2));
+            effects.add(Effect.getEffect(Effect.SLOWNESS).setVisible(false).setDuration(40).setAmplifier(3));
+            effects.add(Effect.getEffect(Effect.WEAKNESS).setVisible(false).setDuration(40).setAmplifier(3));
+        }
+
+        for(Effect effect: effects) player.addEffect(effect);
     }
 
     public double getGroundRadiation(double rad){

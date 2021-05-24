@@ -23,6 +23,7 @@ import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
 import ru.dragonestia.apocalypse.listener.ChatListener;
 import ru.dragonestia.apocalypse.listener.MainListener;
 import ru.dragonestia.apocalypse.storms.GlobalEvents;
+import ru.dragonestia.apocalypse.task.IllnessTask;
 import ru.jl1mbo.scoreboard.manager.ScoreboardManager;
 
 import java.text.DecimalFormat;
@@ -89,6 +90,7 @@ public class Apocalypse extends PluginBase {
         }
 
         globalEvents.start();
+        getServer().getScheduler().scheduleRepeatingTask(new IllnessTask(this), 20 * 3);
     }
 
     @Override
