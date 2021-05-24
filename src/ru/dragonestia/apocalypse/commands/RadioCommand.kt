@@ -33,7 +33,7 @@ class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио"
                         "Максимальная дальность передатчика: §l§3${radio.maxRadioDistance}м§r\n" +
                         "Эффективность передатчика: §l§g${(radio.radioQuality *100).toInt()} процентов§r\n" +
                         "Эффективная дальность передатчика: §l§e${(radio.radioDistance *radio.radioQuality).toInt()}м§f/§g${(radio.maxRadioDistance *radio.radioQuality).toInt()}м§r\n" +
-                        "Выбранная волна: §l§2${radio.radioChannel}МГц§r"
+                        "Выбранная волна: §l§2${radio.radioChannel/10.0}МГц§r"
         )
                 .addButton("Настройки", ImageType.PATH, "textures/ui/dragonestia/radio")
                 .addButton("Зарядить", ImageType.PATH, "textures/ui/dragonestia/refuel")
