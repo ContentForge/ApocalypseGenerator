@@ -252,4 +252,15 @@ public class PlayerData {
         return result;
     }
 
+    public void playSound(String sound, float volume, float pitch){
+        PlaySoundPacket packet = new PlaySoundPacket();
+        packet.name = sound;
+        packet.volume = volume;
+        packet.pitch = pitch;
+        packet.x = player.getFloorX();
+        packet.y = player.getFloorY();
+        packet.z = player.getFloorZ();
+        player.dataPacket(packet);
+    }
+
 }
