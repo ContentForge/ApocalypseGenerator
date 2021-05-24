@@ -195,9 +195,15 @@ public class PlayerData {
             packet.z = player.getFloorZ();
 
             if(playerManager.random.nextFloat() > 0.35f) player.dataPacket(packet);
-            if(rad > 100) player.dataPacket(packet);
-            if(rad > 300)player.dataPacket(packet);
-            if(rad > 500)player.dataPacket(packet);
+            if(rad > 50) player.dataPacket(packet);
+            if(rad > 130) player.dataPacket(packet);
+            if(rad > 300) player.dataPacket(packet);
+            packet.pitch = 1.3F;
+            packet.volume = 0.3F;
+            if(rad > 400) player.dataPacket(packet);
+            packet.pitch = 1.5F;
+            packet.volume = 0.4F;
+            if(rad > 500) player.dataPacket(packet);
         }
 
         return lastRadiationLevel;
