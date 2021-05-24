@@ -55,6 +55,7 @@ public class GlobalEvents {
         if(time <= 0){
             msg = currentEvent.getEndMessage();
             if(msg != null) main.getPlayerManager().sendMessage(msg);
+            if(currentEvent instanceof RadioStorm) main.getPlayerManager().broadcastSound("dragonestia.radio.found", 1F, 1F);
 
             currentEvent = nextEvent;
             time = currentEvent.getPeriod();
@@ -62,6 +63,7 @@ public class GlobalEvents {
 
             msg = currentEvent.getStartMessage();
             if(msg != null) main.getPlayerManager().sendMessage(msg);
+            if(currentEvent instanceof RadioStorm) main.getPlayerManager().broadcastSound("dragonestia.radio.lost", 1F, 1F);
 
             if(!currentEvent.equals(defaultEvent)){
                 nextEvent = defaultEvent;
