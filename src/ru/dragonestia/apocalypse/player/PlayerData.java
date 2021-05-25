@@ -25,6 +25,7 @@ public class PlayerData {
     private short channel;
     private double radiation;
     public double lastRadiationLevel = 0;
+    private boolean cheater;
 
     public PlayerData(Player player, PlayerManager playerManager){
         this.player = player;
@@ -37,6 +38,7 @@ public class PlayerData {
         charge = config.exists("r_charge")? ((short) config.getInt("r_charge")) : 50;
         channel = config.exists("r_channel")? ((short) config.getInt("r_channel")) : 1000;
         radiation = config.exists("rad")? config.getDouble("rad") : 0;
+        cheater = config.exists("cheater") && config.getBoolean("cheater");
     }
 
     public void resetAll(){
@@ -61,6 +63,7 @@ public class PlayerData {
         config.set("r_charge", charge);
         config.set("r_channel", channel);
         config.set("rad", radiation);
+        config.set("cheater", cheater);
         config.save();
     }
 
@@ -301,6 +304,14 @@ public class PlayerData {
         packet.y = player.getFloorY();
         packet.z = player.getFloorZ();
         player.dataPacket(packet);
+    }
+
+    public boolean isCheater(){
+        return cheater;
+    }
+
+    public void markAsCheater(){
+        cheater = true;
     }
 
 }
