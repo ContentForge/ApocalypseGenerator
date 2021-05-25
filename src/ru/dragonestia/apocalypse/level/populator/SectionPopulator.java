@@ -4,8 +4,8 @@ import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
+import ru.dragonestia.apocalypse.level.populator.section.HouseSection;
 import ru.dragonestia.apocalypse.level.populator.section.RoadSection;
-import ru.dragonestia.apocalypse.level.populator.section.Section;
 
 import java.util.Random;
 
@@ -13,7 +13,7 @@ public class SectionPopulator extends Populator {
 
     private final Random random;
     private final ChunkManager chunkManager;
-    private final Section[] houses = new Section[]{};
+    private final HouseSection[] houses = new HouseSection[]{};
 
     public SectionPopulator(Random random, ChunkManager chunkManager){
         this.random = random;
