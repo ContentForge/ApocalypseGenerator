@@ -2,6 +2,7 @@ package ru.dragonestia.apocalypse.level.populator.section;
 
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
+import ru.dragonestia.apocalypse.level.ApocalypseGenerator;
 
 import java.util.Random;
 
@@ -34,10 +35,10 @@ public abstract class HouseSection extends Section {
             }
         };
 
-        generate(blockPlacer, chunk);
+        generate(blockPlacer, chunk, chunk.getBiomeId(5, 5) != ApocalypseGenerator.COMMON_BIOME);
     }
 
-    protected abstract void generate(BlockPlacer placer, FullChunk chunk);
+    protected abstract void generate(BlockPlacer placer, FullChunk chunk, boolean broken);
 
 
 }
