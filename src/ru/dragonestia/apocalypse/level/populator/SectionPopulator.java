@@ -26,7 +26,7 @@ public class SectionPopulator extends Populator {
         if(!generateRoad(chunkX, chunkZ, chunk) || random.nextFloat() < 0.3f){
             if(houses.length == 0) break onGround;
 
-            //TODO: Генерация зданий
+            for(HouseSection house: houses) house.generate(chunk);
         }
 
         //TODO: Генерация канализации
