@@ -5,6 +5,7 @@ import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
 import ru.dragonestia.apocalypse.level.populator.section.HouseSection;
+import ru.dragonestia.apocalypse.level.populator.section.RedBrickHouse;
 import ru.dragonestia.apocalypse.level.populator.section.RoadSection;
 
 import java.util.Random;
@@ -13,17 +14,21 @@ public class SectionPopulator extends Populator {
 
     private final Random random;
     private final ChunkManager chunkManager;
-    private final HouseSection[] houses = new HouseSection[]{};
+    private final HouseSection[] houses;
 
     public SectionPopulator(Random random, ChunkManager chunkManager){
         this.random = random;
         this.chunkManager = chunkManager;
+
+        houses = new HouseSection[]{
+            new RedBrickHouse(random, chunkManager)
+        };
     }
 
     @Override
     public void populate(ChunkManager chunkManager, int chunkX, int chunkZ, NukkitRandom nukkitRandom, FullChunk chunk) {
         onGround:
-        if(!generateRoad(chunkX, chunkZ, chunk) || random.nextFloat() < 0.3f){
+        if(!generateRoad(chunkX, chunkZ, chunk) && random.nextFloat() < 0.3f){
             if(houses.length == 0) break onGround;
 
             for(HouseSection house: houses) house.generate(chunk);
