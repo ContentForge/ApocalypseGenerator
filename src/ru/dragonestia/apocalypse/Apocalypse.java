@@ -6,6 +6,7 @@ import cn.nukkit.level.Level;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.generator.Generator;
 import cn.nukkit.plugin.PluginBase;
+import ru.dragonestia.apocalypse.listener.CheatListener;
 import ru.dragonestia.apocalypse.player.PlayerManager;
 import ru.dragonestia.apocalypse.player.PlayerData;
 import ru.dragonestia.apocalypse.commands.ItemDataCommand;
@@ -74,6 +75,7 @@ public class Apocalypse extends PluginBase {
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new MainListener(this, clusters), this);
         getServer().getPluginManager().registerEvents(new ChatListener(this), this);
+        getServer().getPluginManager().registerEvents(new CheatListener(this), this);
 
         getServer().getCommandMap().registerAll("", Arrays.asList(
                 new ItemDataCommand(),

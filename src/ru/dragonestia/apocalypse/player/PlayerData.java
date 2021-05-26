@@ -68,8 +68,9 @@ public class PlayerData {
     }
 
     public void onDeath(){
-        radiation = 0;
-        if(playerManager.random.nextFloat() > SAVE_CHANCE){
+        radiation = isCheater()? (radiation / 2) : 0;
+
+        if(isCheater() || playerManager.random.nextFloat() > SAVE_CHANCE){
             resetRadio();
             player.sendMessage("§eВсе ваши улучшения и настройки радио были сброшены.");
         }
