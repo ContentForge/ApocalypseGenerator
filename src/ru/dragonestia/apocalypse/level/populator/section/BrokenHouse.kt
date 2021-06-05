@@ -8,7 +8,7 @@ import java.util.*
 class BrokenHouse(random: Random, chunkManager: ChunkManager) : HouseSection(random, chunkManager) {
 
     override fun generate(placer: BlockPlacer, chunk: FullChunk, broken: Boolean) {
-        val h = chunk.getHighestBlockAt(5, 5) - 4
+        val h = chunk.getHighestBlockAt(5, 5) - 2 - random.nextInt(3)
 
         val walls = Array(16) { BooleanArray(16) }
         if(random.nextFloat() > 0.5f){ walls[0][15] = true } else { walls[1][14] = true }
