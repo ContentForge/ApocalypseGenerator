@@ -40,7 +40,7 @@ public class ApocalypseGenerator extends Generator {
     private Populator[] populators;
     private Fortune<Biome> biomes;
     private int biomesWeight;
-    private SimplexD temp;
+    private SimplexD cityNoise;
 
     public ApocalypseGenerator(){
         settings = new HashMap<>();
@@ -63,13 +63,14 @@ public class ApocalypseGenerator extends Generator {
         perlin = new PerlinD(nukkitRandom, 1F, 1F);
         biomeBlocks = new int[]{0, 14, 4, 5, 9};
         random = new Random();
+        cityNoise = new SimplexD(nukkitRandom, 1f, 1);
         populators = new Populator[]{
                 new Ores(random, Apocalypse.getInstance().clusters),
                 new Ground(nukkitRandom, random),
                 new LavaPit(simplex, new SimplexD(nukkitRandom, 1F, 1F), random),
                 new UndergroundLava(random),
                 new BedrockGradient(),
-                new SectionPopulator(random, chunkManager),
+                new SectionPopulator(random, chunkManager, cityNoise),
         };
         biomes = new Fortune<>(random);
         biomes.items.addAll(Arrays.asList(
@@ -78,7 +79,6 @@ public class ApocalypseGenerator extends Generator {
                 new Pair<>(Biome.getBiome(FIRE_BIOME), 7)
         ));
         biomesWeight = biomes.getAllWeight() * 2;
-        temp = new SimplexD(nukkitRandom, 1F, 1F);
 
         nukkitRandom.setSeed("ЕБАНУТЬСЯ".hashCode());
     }

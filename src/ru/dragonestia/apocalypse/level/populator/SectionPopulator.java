@@ -2,6 +2,7 @@ package ru.dragonestia.apocalypse.level.populator;
 
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
+import cn.nukkit.level.generator.noise.nukkit.d.SimplexD;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
 import ru.dragonestia.apocalypse.level.populator.section.*;
@@ -13,10 +14,12 @@ public class SectionPopulator extends Populator {
     private final Random random;
     private final ChunkManager chunkManager;
     private final HouseSection[] houses;
+    private final SimplexD cityNoise;
 
-    public SectionPopulator(Random random, ChunkManager chunkManager){
+    public SectionPopulator(Random random, ChunkManager chunkManager, SimplexD cityNoise){
         this.random = random;
         this.chunkManager = chunkManager;
+        this.cityNoise = cityNoise;
 
         houses = new HouseSection[]{
             new BrokenHouse(random, chunkManager),
@@ -27,6 +30,7 @@ public class SectionPopulator extends Populator {
 
     @Override
     public void populate(ChunkManager chunkManager, int chunkX, int chunkZ, NukkitRandom nukkitRandom, FullChunk chunk) {
+        if(cityNoise.getNoise2D(chunkX / 100.0, chunkZ / 100.0) < 0) return;
         onGround:
         if(!generateRoad(chunkX, chunkZ, chunk) && random.nextFloat() < 0.3f){
             if(houses.length == 0) break onGround;
