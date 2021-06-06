@@ -89,10 +89,11 @@ public class ApocalypseGenerator extends Generator {
 
         for(int x = 0; x < 16; x++){
             for(int z = 0; z < 16; z++){
+                int globalX = x + chunkX*16, globalZ = z + chunkZ*16;
                 ApocalypseBiome biome = (ApocalypseBiome) generateBiome(x + chunkX*16, z + chunkZ*16);
-                chunk.setBiome(x, z, biome);
+                chunk.setBiomeId(x, z, (biome instanceof AshBiome && globalX > 0 && globalX < 1000 && globalZ > 0 && globalZ < 1000)? FIRE_BIOME : biome.getId() );
 
-                double h = simplex.getNoise2D((x + chunkX*16) / 100.0, (z + chunkZ*16) / 100.0);
+                double h = simplex.getNoise2D(globalX / 100.0, globalZ / 100.0);
                 h = biome.getNoiseInterpolate(random, h);
                 int noise = 0;
                 while (random.nextFloat() < (biome instanceof AshBiome? 0.35f : (biome instanceof CommonBiome? 0.10f : 0.25f)) && noise < 100) noise++;
