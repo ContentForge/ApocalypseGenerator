@@ -7,9 +7,11 @@ import cn.nukkit.event.EventPriority;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.block.BlockBreakEvent;
 import cn.nukkit.event.player.PlayerDeathEvent;
+import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.event.player.PlayerJoinEvent;
 import cn.nukkit.event.player.PlayerQuitEvent;
 import cn.nukkit.event.server.DataPacketSendEvent;
+import cn.nukkit.item.Item;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.network.protocol.DataPacket;
@@ -26,6 +28,17 @@ public class MainListener implements Listener {
     public MainListener(Apocalypse main, Cluster[] cluster){
         this.main = main;
         this.clusters = cluster;
+    }
+
+    @EventHandler
+    public void onInteract(PlayerInteractEvent event){
+        if(!event.getAction().equals(PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK)) return;
+        Player player = event.getPlayer();
+        if(player.isCreative() && player.getInventory().getItemInHand().getId() == Item.STICK){
+            Block block = event.getBlock();
+            player.sendMessage("cX: "+(block.getFloorX()%16)+" Y: "+block.getFloorY()+" cZ: "+(block.getFloorZ()%16));
+            player.sendMessage("id: "+block.getId()+" meta: "+block.getDamage());
+        }
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
