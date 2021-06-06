@@ -3,7 +3,6 @@ package ru.dragonestia.apocalypse.level.populator.section;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
-import cn.nukkit.math.Vector3;
 import ru.dragonestia.apocalypse.level.ApocalypseGenerator;
 
 import java.util.Random;
@@ -65,6 +64,7 @@ public class RoadSection extends Section {
     }
 
     private void placeColumn(int x, int y, int z, FullChunk chunk, int rotation){
+        if(chunk.getBlockId(x, y, z) == 0) return;
         y++;
         chunk.setBlock(x, y++, z, 159, 9);
         chunk.setBlock(x, y++, z, 159, 9);
