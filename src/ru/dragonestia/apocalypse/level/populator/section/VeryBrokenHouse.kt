@@ -11,24 +11,27 @@ class VeryBrokenHouse(random: Random, chunkManager: ChunkManager) : HouseSection
     override fun generate(placer: BlockPlacer, chunk: FullChunk, broken: Boolean) {
         val h = chunk.getHighestBlockAt(5, 5) - 10 - random.nextInt(5)
         var yOffset = h
+        val s = 2 + random.nextInt(2)
 
-        val levels = 4 + random.nextInt(7)
+        val levels = 7 + random.nextInt(14)
         val void = VoidFilter(h, h + levels*4, random.nextInt(2), random)
+
+        val max = if(s == 3) 15 else 14
 
         for(level in 4..levels){
             for(y in 0..3){
-                for(x in 0..14){
-                    for(z in 0..14){
+                for(x in 0..max){
+                    for(z in 0..max){
                         if(void.check(x, yOffset, z)) continue
 
-                        if(x in 1..13 && z in 1..13) continue
+                        if(x in 1 until max && z in 1 until max) continue
 
                         if(y == 0){
                             placeBorder(x, yOffset, z, placer, broken)
                             continue
                         }
 
-                        if(x % 2 == 0 && z % 2 == 0){
+                        if(x % s == 0 && z % s == 0){
                             placeWall(x, yOffset, z, placer, broken)
                             continue
                         }
@@ -39,13 +42,13 @@ class VeryBrokenHouse(random: Random, chunkManager: ChunkManager) : HouseSection
         }
 
         for(y in 0..(4 + random.nextInt(9))){
-            for(x in 0..14){
-                for(z in 0..14){
+            for(x in 0..max){
+                for(z in 0..max){
                     if(void.check(x, yOffset, z)) continue
 
-                    if(x in 1..13 && z in 1..13) continue
+                    if(x in 1 until max && z in 1 until max) continue
 
-                    if(x % 2 == 0 && z % 2 == 0 && chunk.getBlockId(x, yOffset-1, z) != 0 && random.nextFloat() < 0.7){
+                    if(x % s == 0 && z % s == 0 && placer.getBlock(x, yOffset-1, z) != 0 && random.nextFloat() < 0.7){
                         placeWall(x, yOffset, z, placer, broken)
                         continue
                     }

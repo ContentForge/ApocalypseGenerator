@@ -3,6 +3,7 @@ package ru.dragonestia.apocalypse.level.populator.section;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
+import ru.dragonestia.apocalypse.level.ApocalypseGenerator;
 import ru.dragonestia.apocalypse.level.populator.section.filter.VoidFilter;
 
 import java.util.Random;
@@ -15,7 +16,7 @@ public class BrickHouse extends HouseSection {
 
     @Override
     protected void generate(BlockPlacer placer, FullChunk chunk, boolean broken) {
-        int h = chunk.getHighestBlockAt(0, 0) - 6 - random.nextInt(4);
+        int h = chunk.getHighestBlockAt(7, 7) - 6 - random.nextInt(4);
         int levels = 5 + random.nextInt(7);
         VoidFilter voidFilter = new VoidFilter(h, h + levels*4, random.nextInt(2), random);
         for(int i = 1; i < levels; i++) buildLevel(h + i*4, placer, chunk, voidFilter);
@@ -25,7 +26,7 @@ public class BrickHouse extends HouseSection {
             for(int z = 0; z < 16; z++){
                 for(int y = levels * 4 + h, ty = y; ty < y + 2; ty++){
                     if(x > 0 && x < 15 && z > 0 && z < 15){
-                        if(y != ty) continue;
+                        if(y != ty || (x < 3 && z < 4)) continue;
                         placeFloor(x, ty, z, placer, voidFilter);
                         continue;
                     }
@@ -127,6 +128,10 @@ public class BrickHouse extends HouseSection {
         int id = Item.COBBLE, damage = 0;
         switch (random.nextInt(7)){
             case 0:
+                if(blockPlacer.getBiome(x, z) == ApocalypseGenerator.FIRE_BIOME){
+                    id = 0;
+                    break;
+                }
                 id = Item.PLANK;
                 break;
             case 2:
