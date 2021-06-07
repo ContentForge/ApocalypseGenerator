@@ -124,7 +124,6 @@ public class BrickHouse extends HouseSection {
     }
 
     private void placeSymmetryFloor(int x, int y, int z, BlockPlacer blockPlacer, VoidFilter voidFilter){
-        if(voidFilter.check(x, y, z)) return;
         int id = Item.COBBLE, damage = 0;
         switch (random.nextInt(7)){
             case 0:
@@ -145,8 +144,8 @@ public class BrickHouse extends HouseSection {
                 break;
         }
 
-        blockPlacer.setBlock(x, y, z, id, damage);
-        blockPlacer.setBlock(z, y, x, id, damage);
+        if(!voidFilter.check(x, y, z)) blockPlacer.setBlock(x, y, z, id, damage);
+        if(!voidFilter.check(z, y, x)) blockPlacer.setBlock(z, y, x, id, damage);
     }
 
 }
