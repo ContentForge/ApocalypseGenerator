@@ -6,6 +6,8 @@ import cn.nukkit.level.Level;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.generator.Generator;
 import cn.nukkit.plugin.PluginBase;
+import ru.dragonestia.apocalypse.level.populator.cluster.GoldCluster;
+import ru.dragonestia.apocalypse.level.populator.cluster.IronCluster;
 import ru.dragonestia.apocalypse.listener.CheatListener;
 import ru.dragonestia.apocalypse.player.PlayerManager;
 import ru.dragonestia.apocalypse.player.PlayerData;
@@ -65,7 +67,8 @@ public class Apocalypse extends PluginBase {
         Biome.biomes[ApocalypseGenerator.COMMON_BIOME] = new CommonBiome();
 
         clusters = new Cluster[]{
-
+            new IronCluster(playerManager.random),
+                new GoldCluster(playerManager.random)
         };
 
         Generator.addGenerator(ApocalypseGenerator.class, "apocalypse", Generator.TYPE_INFINITE);
