@@ -13,21 +13,29 @@ import cn.nukkit.event.player.PlayerQuitEvent;
 import cn.nukkit.event.server.DataPacketSendEvent;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.Level;
+import cn.nukkit.level.Sound;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.network.protocol.DataPacket;
 import cn.nukkit.network.protocol.StartGamePacket;
 import ru.dragonestia.apocalypse.Apocalypse;
+import ru.dragonestia.apocalypse.item.ApocalypseID;
+import ru.dragonestia.apocalypse.item.PlasticItem;
 import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class MainListener implements Listener {
 
     private final Cluster[] clusters;
     private final Apocalypse main;
+    private final Random random;
 
-    public MainListener(Apocalypse main, Cluster[] cluster){
+    public MainListener(Apocalypse main, Cluster[] cluster, Random random){
         this.main = main;
         this.clusters = cluster;
+        this.random = random;
     }
 
     @EventHandler
@@ -84,6 +92,38 @@ public class MainListener implements Listener {
         Player player = event.getEntity();
 
         main.getPlayerManager().get(player).onDeath();
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onBreakBox(BlockBreakEvent event){
+        if(event.getBlock().getId() != Item.JUKEBOX) return;
+        Item drop;
+
+        switch (random.nextInt(7)){
+            case 0:
+                drop = Item.get(287, 0, random.nextInt(3) + 1);
+                break;
+            case 1:
+                drop = Item.get(ApocalypseID.PLASTIC, 0, random.nextInt(1) + 1);
+                break;
+            case 2:
+                drop = Item.get(ApocalypseID.CLOTH, 0, random.nextInt(2) + 1);
+                break;
+            case 3:
+                drop = Item.get(ApocalypseID.TIN_NUGGET, 0, random.nextInt(4) + 1);
+                break;
+            case 4:
+                drop = Item.get(ApocalypseID.COPPER_NUGGET, 0, random.nextInt(4) + 1);
+                break;
+            case 5:
+                drop = Item.get(ApocalypseID.BATTERY, 0, 1);
+                break;
+            default:
+                drop = Item.get(Item.PLANK);
+        }
+
+        event.setDrops(new Item[]{drop});
+        event.getBlock().getLevel().addSound(event.getBlock(), Sound.MOB_ZOMBIE_WOODBREAK);
     }
 
 }

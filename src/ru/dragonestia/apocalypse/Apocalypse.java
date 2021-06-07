@@ -73,7 +73,7 @@ public class Apocalypse extends PluginBase {
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(new MainListener(this, clusters), this);
+        getServer().getPluginManager().registerEvents(new MainListener(this, clusters, playerManager.random), this);
         getServer().getPluginManager().registerEvents(new ChatListener(this), this);
         getServer().getPluginManager().registerEvents(new CheatListener(this), this);
 
