@@ -5,9 +5,11 @@ import cn.nukkit.inventory.PlayerInventory;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
+import cn.nukkit.level.biome.Biome;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.network.protocol.PlaySoundPacket;
 import cn.nukkit.potion.Effect;
+import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -16,8 +18,6 @@ import java.util.Random;
 abstract public class GlobalEventBase {
 
     protected final Random random = new Random();
-
-    private final static HashSet<Integer> transparentBlocks = new HashSet<>(Arrays.asList(0, 8, 9, 18, 20, 102, 50, 101, 85, 65, 107));
 
     public abstract void init();
 
@@ -36,17 +36,9 @@ abstract public class GlobalEventBase {
     public abstract String getEndMessage();
 
     public abstract boolean condition();
-    public abstract void handle(Player player);
 
-    protected boolean checkUp(Vector3 pos, Level level) {
-        int x = (int) pos.x;
-        int posY = (int) pos.y + 1;
-        int z = (int) pos.z;
-
-        for(int y = 127; y >= posY; y--){
-            if(!transparentBlocks.contains(level.getBlockIdAt(x, y, z))) return false;
-        }
-        return true;
+    public void handle(Player player){
+        checkSunBurn(player);
     }
 
     protected void playSound(Player player, Vector3 pos, Sound sound){
@@ -65,25 +57,12 @@ abstract public class GlobalEventBase {
     }
 
     protected void checkSunBurn(Player player){
-        if(!player.isSurvival()) return;
+        Biome biome = Biome.getBiome(player.getLevel().getBiomeId(player.getFloorX(), player.getFloorZ()));
+        if(!(biome instanceof ApocalypseBiome)) return;
+        ApocalypseBiome apocalypseBiome = (ApocalypseBiome) biome;
 
-        //Защитный костюм
-        PlayerInventory inv = player.getInventory();
-        if(inv.getBoots().getId() == Item.CHAIN_BOOTS &&
-                inv.getLeggings().getId() == Item.CHAIN_LEGGINGS &&
-                inv.getChestplate().getId() == Item.CHAIN_CHESTPLATE &&
-                inv.getHelmet().getId() == Item.CHAIN_HELMET) return;
-
-        if(!checkUp(player, player.level)) return;
-
-        player.addEffect(Effect.getEffect(Effect.WITHER)
-                .setDuration(20 * 5)
-                .setAmplifier(2)
-                .setVisible(false));
-        player.addEffect(Effect.getEffect(Effect.BLINDNESS)
-                .setDuration(20 * 5)
-                .setVisible(false));
-        player.sendTitle("§g§l⚠ §cСолнечная радиация §g⚠", "§6СРОЧНО НАЙДИТЕ УКРЫТИЕ!", 10, 10, 3*20);
+        if(apocalypseBiome.hasProtection(player)) return;
+        apocalypseBiome.giveNegativeEffect(player, 1);
     }
 
 }

@@ -59,10 +59,10 @@ public class ShakeStorm extends GlobalEventBase {
 
     @Override
     public void handle(Player player) {
-        playSound(player, player, Sound.AMBIENT_CAVE, 3F, 0.5f);
         if(!player.isSurvival()) return;
+        playSound(player, player, Sound.AMBIENT_CAVE, 3F, 0.5f);
 
-        float force = 0f;
+        float force;
         if(player.y < 45){
             force = (45 / (float) player.y - 1);
 
@@ -89,7 +89,7 @@ public class ShakeStorm extends GlobalEventBase {
             player.attack(event);
         }else player.setMotion(new Vector3((random.nextFloat() - 0.5f) /10f, 0.05f, (random.nextFloat() - 0.5f) /10f));
 
-        checkSunBurn(player);
+        super.handle(player);
     }
 
 }

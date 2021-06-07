@@ -17,17 +17,11 @@ public class FireBiome extends ApocalypseBiome {
     }
 
     @Override
-    public boolean isNegativeEffectBySun() {
-        return true;
-    }
-
-    @Override
-    public void giveNegativeEffect(Player player, int level) {
-
-    }
-
-    @Override
-    public boolean hasProtection(Player player) {
+    public boolean giveNegativeEffect(Player player, int level) {
+        if(super.giveNegativeEffect(player, level)){
+            player.setOnFire(5);
+            return true;
+        }
         return false;
     }
 

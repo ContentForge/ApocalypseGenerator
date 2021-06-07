@@ -5,11 +5,9 @@ import ru.dragonestia.apocalypse.storms.GlobalEventBase;
 
 public class NormalStorm extends GlobalEventBase {
 
-    private short interval;
-
     @Override
     public void init() {
-        interval = 0;
+
     }
 
     @Override
@@ -49,17 +47,7 @@ public class NormalStorm extends GlobalEventBase {
 
     @Override
     public boolean condition(){
-        if(interval == 2){
-            interval = 0;
-
-            return true;
-        }
-        interval++;
-        return false;
-    }
-
-    public void handle(Player player) {
-        checkSunBurn(player);
+        return true;
     }
 
 }

@@ -4,6 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.level.Sound;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.potion.Effect;
+import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.storms.GlobalEventBase;
 
 public class SunStorm extends GlobalEventBase {
@@ -65,7 +66,7 @@ public class SunStorm extends GlobalEventBase {
 
         if(player.y < 55) return;
         player.setMotion(new Vector3((random.nextFloat() - .5f)/1.5, 0, (random.nextFloat() - .5f)/1.5));
-        if(!checkUp(player, player.level)) return;
+        if(!ApocalypseBiome.checkUp(player, player.level)) return;
 
         player.addEffect(Effect.getEffect(Effect.WITHER)
                 .setDuration(20 * 5)
@@ -75,8 +76,7 @@ public class SunStorm extends GlobalEventBase {
                 .setDuration(20 * 15)
                 .setVisible(false));
         player.setMotion(new Vector3((random.nextFloat() - .5f)*2, random.nextFloat() + 1, (random.nextFloat())*2));
-
-
+        player.sendTip("Приятного полета :D");
     }
 
 }
