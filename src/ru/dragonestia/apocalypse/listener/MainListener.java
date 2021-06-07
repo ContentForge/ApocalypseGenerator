@@ -96,7 +96,7 @@ public class MainListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onBreakBox(BlockBreakEvent event){
-        if(event.getBlock().getId() != Item.JUKEBOX) return;
+        if(event.isCancelled() || event.isFastBreak() || event.getBlock().getId() != Item.JUKEBOX) return;
         Item drop;
 
         switch (random.nextInt(7)){
