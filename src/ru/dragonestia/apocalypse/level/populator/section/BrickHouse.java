@@ -95,6 +95,11 @@ public class BrickHouse extends HouseSection {
         for(int x = 7; x < 12; x++)
             for(int z = 13; z < 15; z++)
                 placeSymmetryFloor(x, dy, z, blockPlacer, voidFilter);
+
+        //Коробки
+        placeBox(12, dy+1, 1, blockPlacer, voidFilter);
+        placeBox(13, dy+1, 11, blockPlacer, voidFilter);
+        placeBox(10, dy+1, 7, blockPlacer, voidFilter);
     }
 
     private void placeSymmetryWall(int x, int y, int z, BlockPlacer blockPlacer, VoidFilter voidFilter, boolean broken){
@@ -146,6 +151,11 @@ public class BrickHouse extends HouseSection {
 
         if(!voidFilter.check(x, y, z)) blockPlacer.setBlock(x, y, z, id, damage);
         if(!voidFilter.check(z, y, x)) blockPlacer.setBlock(z, y, x, id, damage);
+    }
+
+    private void placeBox(int x, int y, int z, BlockPlacer placer, VoidFilter voidFilter){
+        if(!voidFilter.check(x, y, z) && random.nextFloat() < 0.05f) placer.setBlock(x, y, z, Item.JUKEBOX);
+        if(!voidFilter.check(z, y, x) && random.nextFloat() < 0.05f) placer.setBlock(z, y, x, Item.JUKEBOX);
     }
 
 }
