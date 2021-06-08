@@ -27,8 +27,10 @@ public class Ores extends Populator {
 
         for(Cluster cluster: clusters){
             for(int i = 0, n = cluster.getClustersCountByBiome((ApocalypseBiome) biome); i < n; i++){
-                int y = cluster.getMinLevel() + random.nextInt(cluster.getMaxLevel());
-                chunk.setBlockId(random.nextInt(16), y, random.nextInt(16), cluster.getBlockId());
+                int x = random.nextInt(16), z = random.nextInt(16);
+                int yMin = cluster.getMinLevel(), yMax = cluster.getMaxLevel(), delta = yMax - yMin;
+                int y = yMin + (random.nextInt(Math.min(delta, chunk.getHighestBlockAt(x, z))));
+                chunk.setBlockId(x, y, z, cluster.getBlockId());
             }
         }
     }
