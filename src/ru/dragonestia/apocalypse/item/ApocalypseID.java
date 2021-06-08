@@ -18,4 +18,9 @@ public interface ApocalypseID {
     int TIN_INGOT = 10013;
     int COPPER_NUGGET = 10014;
     int TIN_NUGGET = 10015;
+
+    int ZELENKA = 10016;
+    int YODADULIN = 10017;
+    int TABLET = 10018;
+
 }
