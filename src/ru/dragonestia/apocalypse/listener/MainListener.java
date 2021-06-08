@@ -99,7 +99,7 @@ public class MainListener implements Listener {
         if(event.isCancelled() || event.isFastBreak() || event.getBlock().getId() != Item.JUKEBOX) return;
         Item drop;
 
-        switch (random.nextInt(7)){
+        switch (random.nextInt(8)){
             case 0:
                 drop = Item.get(287, 0, random.nextInt(3) + 1);
                 break;
@@ -117,6 +117,9 @@ public class MainListener implements Listener {
                 break;
             case 5:
                 drop = Item.get(ApocalypseID.BATTERY, 0, 1);
+                break;
+            case 6:
+                drop = Item.get(ApocalypseID.YODADULIN, 0, 1);
                 break;
             default:
                 drop = Item.get(Item.PLANK);
