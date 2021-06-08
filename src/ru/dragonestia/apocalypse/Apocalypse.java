@@ -61,6 +61,9 @@ public class Apocalypse extends PluginBase {
         Item.list[ApocalypseID.TIN_INGOT] = TinIngotItem.class;
         Item.list[ApocalypseID.COPPER_NUGGET] = CopperNuggetItem.class;
         Item.list[ApocalypseID.TIN_NUGGET] = TinNuggetItem.class;
+        Item.list[ApocalypseID.ZELENKA] = ZelenkaItem.class;
+        Item.list[ApocalypseID.YODADULIN] = YodadulinItem.class;
+        Item.list[ApocalypseID.TABLET] = TabletItem.class;
 
         Biome.biomes[ApocalypseGenerator.ASH_BIOME] = new AshBiome();
         Biome.biomes[ApocalypseGenerator.FIRE_BIOME] = new FireBiome();
