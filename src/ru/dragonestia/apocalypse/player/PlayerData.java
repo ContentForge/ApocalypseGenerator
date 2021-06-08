@@ -188,23 +188,23 @@ public class PlayerData {
 
         ArrayList<Effect> effects = new ArrayList<>();
         if (radiation < 250_000){
-            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(60*20));
+            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(100*20));
             effects.add(Effect.getEffect(Effect.POISON).setVisible(false).setDuration(10*20));
             effects.add(Effect.getEffect(Effect.NAUSEA).setVisible(false).setDuration(10*20));
         } else if(radiation < 400_000){
-            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(90*20).setAmplifier(1));
+            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(100*20).setAmplifier(1));
             effects.add(Effect.getEffect(Effect.POISON).setVisible(false).setDuration(20*20).setAmplifier(1));
-            effects.add(Effect.getEffect(Effect.NAUSEA).setVisible(false).setDuration(30*20).setAmplifier(1));
-            effects.add(Effect.getEffect(Effect.SLOWNESS).setVisible(false).setDuration(120*20));
-            effects.add(Effect.getEffect(Effect.WEAKNESS).setVisible(false).setDuration(120*20));
+            effects.add(Effect.getEffect(Effect.NAUSEA).setVisible(false).setDuration(30*60).setAmplifier(1));
+            effects.add(Effect.getEffect(Effect.SLOWNESS).setVisible(false).setDuration(180*20));
+            effects.add(Effect.getEffect(Effect.WEAKNESS).setVisible(false).setDuration(180*20));
         } else if (radiation < 700_000){
-            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(120*20).setAmplifier(2));
+            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(150*20).setAmplifier(2));
             effects.add(Effect.getEffect(Effect.WITHER).setVisible(false).setDuration(15*20).setAmplifier(1));
             effects.add(Effect.getEffect(Effect.NAUSEA).setVisible(false).setDuration(35*20).setAmplifier(2));
-            effects.add(Effect.getEffect(Effect.SLOWNESS).setVisible(false).setDuration(220*20).setAmplifier(1));
-            effects.add(Effect.getEffect(Effect.WEAKNESS).setVisible(false).setDuration(220*20).setAmplifier(1));
+            effects.add(Effect.getEffect(Effect.SLOWNESS).setVisible(false).setDuration(320*20).setAmplifier(1));
+            effects.add(Effect.getEffect(Effect.WEAKNESS).setVisible(false).setDuration(320*20).setAmplifier(1));
         } else {
-            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(150*20).setAmplifier(3));
+            effects.add(Effect.getEffect(Effect.HUNGER).setVisible(false).setDuration(200*20).setAmplifier(3));
             effects.add(Effect.getEffect(Effect.WITHER).setVisible(false).setDuration(65*20).setAmplifier(2));
             effects.add(Effect.getEffect(Effect.SLOWNESS).setVisible(false).setDuration(40*20).setAmplifier(3));
             effects.add(Effect.getEffect(Effect.WEAKNESS).setVisible(false).setDuration(40*20).setAmplifier(3));
