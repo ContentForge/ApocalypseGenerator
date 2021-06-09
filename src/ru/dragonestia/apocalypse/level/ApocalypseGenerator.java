@@ -71,6 +71,7 @@ public class ApocalypseGenerator extends Generator {
                 new UndergroundLava(random),
                 new BedrockGradient(),
                 new SectionPopulator(random, chunkManager, cityNoise),
+                new MushroomCave(random),
         };
         biomes = new Fortune<>(random);
         biomes.items.addAll(Arrays.asList(
