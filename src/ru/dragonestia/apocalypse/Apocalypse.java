@@ -2,6 +2,8 @@ package ru.dragonestia.apocalypse;
 
 import cn.nukkit.Player;
 import cn.nukkit.item.Item;
+import cn.nukkit.level.GameRule;
+import cn.nukkit.level.GameRules;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.generator.Generator;
@@ -85,10 +87,18 @@ public class Apocalypse extends PluginBase {
                 new RadioCommand(this),
                 new SendRadioCommand(this),
                 new StormCommand(globalEvents),
-                new JokeCommand(playerManager)
+                new JokeCommand(playerManager),
+                new PlayCommand(playerManager)
         ));
 
-        gameLevel = getServer().getDefaultLevel();
+        if (!getServer().loadLevel("world")) {
+            getServer().generateLevel("world", 1L, ApocalypseGenerator.class);
+        }
+        gameLevel = getServer().getLevelByName("world");
+        GameRules gameRules = gameLevel.getGameRules();
+        gameRules.setGameRule(GameRule.SHOW_COORDINATES, true);
+        gameRules.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
+        gameRules.setGameRule(GameRule.SHOW_DEATH_MESSAGE, false);
 
         for(Player player: getServer().getOnlinePlayers().values()){
             playerManager.initPlayer(player);
