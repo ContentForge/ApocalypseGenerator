@@ -101,6 +101,7 @@ public class Apocalypse extends PluginBase {
         gameRules.setGameRule(GameRule.SHOW_COORDINATES, true);
         gameRules.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
         gameRules.setGameRule(GameRule.SHOW_DEATH_MESSAGE, false);
+        gameRules.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
 
         for(Player player: getServer().getOnlinePlayers().values()){
             playerManager.initPlayer(player);
