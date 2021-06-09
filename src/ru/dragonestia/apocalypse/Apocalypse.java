@@ -97,6 +97,8 @@ public class Apocalypse extends PluginBase {
 
         globalEvents.start();
         getServer().getScheduler().scheduleRepeatingTask(new IllnessTask(this), 20 * 60 * 3);
+
+        getServer().getNetwork().setName("§l[§cD§f] §4Apоcalypse");
     }
 
     @Override
@@ -122,7 +124,7 @@ public class Apocalypse extends PluginBase {
 
     public void initScoreboard(Player player) {
         ScoreboardManager.createScoreboard(player)
-                .setDisplayName("§c§lDrаgonestia§f - §4Hardcore")
+                .setDisplayName("§c§lDrаgonestia§f - §4Apocalypse")
                 .setLine(1, "§fРадио: §2§l???Мгц")
                 .setLine(2, "§fРадиация: §g§l0 мР/с")
                 .setLine(3, "§fФон.Радиация: §g§l0 мР/с")
