@@ -6,15 +6,12 @@ import cn.nukkit.level.Level;
 import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.generator.Generator;
 import cn.nukkit.plugin.PluginBase;
+import ru.dragonestia.apocalypse.commands.*;
 import ru.dragonestia.apocalypse.level.populator.cluster.GoldCluster;
 import ru.dragonestia.apocalypse.level.populator.cluster.IronCluster;
 import ru.dragonestia.apocalypse.listener.CheatListener;
 import ru.dragonestia.apocalypse.player.PlayerManager;
 import ru.dragonestia.apocalypse.player.PlayerData;
-import ru.dragonestia.apocalypse.commands.ItemDataCommand;
-import ru.dragonestia.apocalypse.commands.RadioCommand;
-import ru.dragonestia.apocalypse.commands.SendRadioCommand;
-import ru.dragonestia.apocalypse.commands.StormCommand;
 import ru.dragonestia.apocalypse.item.ApocalypseID;
 import ru.dragonestia.apocalypse.item.*;
 import ru.dragonestia.apocalypse.level.ApocalypseGenerator;
@@ -87,7 +84,8 @@ public class Apocalypse extends PluginBase {
                 new ItemDataCommand(),
                 new RadioCommand(this),
                 new SendRadioCommand(this),
-                new StormCommand(globalEvents)
+                new StormCommand(globalEvents),
+                new JokeCommand(playerManager)
         ));
 
         gameLevel = getServer().getDefaultLevel();
