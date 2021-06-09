@@ -9,9 +9,7 @@ import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.generator.Generator;
 import cn.nukkit.plugin.PluginBase;
 import ru.dragonestia.apocalypse.commands.*;
-import ru.dragonestia.apocalypse.level.populator.cluster.GoldCluster;
-import ru.dragonestia.apocalypse.level.populator.cluster.IronCluster;
-import ru.dragonestia.apocalypse.level.populator.cluster.ScrapCluster;
+import ru.dragonestia.apocalypse.level.populator.cluster.*;
 import ru.dragonestia.apocalypse.listener.CheatListener;
 import ru.dragonestia.apocalypse.listener.LobbyListener;
 import ru.dragonestia.apocalypse.player.PlayerManager;
@@ -23,7 +21,6 @@ import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.biome.CommonBiome;
 import ru.dragonestia.apocalypse.level.biome.AshBiome;
 import ru.dragonestia.apocalypse.level.biome.FireBiome;
-import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
 import ru.dragonestia.apocalypse.listener.ChatListener;
 import ru.dragonestia.apocalypse.listener.MainListener;
 import ru.dragonestia.apocalypse.storms.GlobalEvents;
@@ -74,6 +71,7 @@ public class Apocalypse extends PluginBase {
             new IronCluster(playerManager.random),
                 new GoldCluster(playerManager.random),
                 new ScrapCluster(),
+                new RedstoneCluster(),
         };
 
         Generator.addGenerator(ApocalypseGenerator.class, "apocalypse", Generator.TYPE_INFINITE);
