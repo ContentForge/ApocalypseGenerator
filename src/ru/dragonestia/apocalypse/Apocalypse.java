@@ -11,7 +11,9 @@ import cn.nukkit.plugin.PluginBase;
 import ru.dragonestia.apocalypse.commands.*;
 import ru.dragonestia.apocalypse.level.populator.cluster.GoldCluster;
 import ru.dragonestia.apocalypse.level.populator.cluster.IronCluster;
+import ru.dragonestia.apocalypse.level.populator.cluster.ScrapCluster;
 import ru.dragonestia.apocalypse.listener.CheatListener;
+import ru.dragonestia.apocalypse.listener.LobbyListener;
 import ru.dragonestia.apocalypse.player.PlayerManager;
 import ru.dragonestia.apocalypse.player.PlayerData;
 import ru.dragonestia.apocalypse.item.ApocalypseID;
@@ -70,7 +72,8 @@ public class Apocalypse extends PluginBase {
 
         clusters = new Cluster[]{
             new IronCluster(playerManager.random),
-                new GoldCluster(playerManager.random)
+                new GoldCluster(playerManager.random),
+                new ScrapCluster(),
         };
 
         Generator.addGenerator(ApocalypseGenerator.class, "apocalypse", Generator.TYPE_INFINITE);
@@ -81,6 +84,7 @@ public class Apocalypse extends PluginBase {
         getServer().getPluginManager().registerEvents(new MainListener(this, clusters, playerManager.random), this);
         getServer().getPluginManager().registerEvents(new ChatListener(this), this);
         getServer().getPluginManager().registerEvents(new CheatListener(this), this);
+        getServer().getPluginManager().registerEvents(new LobbyListener(this), this);
 
         getServer().getCommandMap().registerAll("", Arrays.asList(
                 new ItemDataCommand(),
@@ -88,7 +92,7 @@ public class Apocalypse extends PluginBase {
                 new SendRadioCommand(this),
                 new StormCommand(globalEvents),
                 new JokeCommand(playerManager),
-                new PlayCommand(playerManager)
+                new PlayCommand(this)
         ));
 
         if (!getServer().loadLevel("world")) {
