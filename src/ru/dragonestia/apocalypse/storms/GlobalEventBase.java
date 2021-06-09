@@ -46,8 +46,12 @@ abstract public class GlobalEventBase {
     }
 
     protected void playSound(Player player, Vector3 pos, Sound sound, float volume, float pitch){
+        playSound(player, pos, sound.getSound(), volume, pitch);
+    }
+
+    protected void playSound(Player player, Vector3 pos, String sound, float volume, float pitch){
         PlaySoundPacket packet = new PlaySoundPacket();
-        packet.name = sound.getSound();
+        packet.name = sound;
         packet.volume = volume;
         packet.pitch = pitch;
         packet.x = pos.getFloorX();
