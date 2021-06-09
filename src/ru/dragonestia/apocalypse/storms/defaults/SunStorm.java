@@ -62,7 +62,7 @@ public class SunStorm extends GlobalEventBase {
         if(player.y < 30) return;
 
         if(!player.isSurvival()) return;
-        if(soundInterval > 0) playSound(player, player.add(new Vector3(0, 2, 0)), Sound.ELYTRA_LOOP, (float) (player.y / 55), 1f);
+        if(soundInterval > 0) playSound(player, player.add(new Vector3(0, 2, 0)), "dragonestia.storm.wind", (float) (player.y / 55), 1f);
 
         if(player.y < 55) return;
         player.setMotion(new Vector3((random.nextFloat() - .5f)/1.5, 0, (random.nextFloat() - .5f)/1.5));
