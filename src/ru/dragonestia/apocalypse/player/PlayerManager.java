@@ -1,7 +1,6 @@
 package ru.dragonestia.apocalypse.player;
 
 import cn.nukkit.Player;
-import cn.nukkit.network.protocol.PlaySoundPacket;
 import ru.dragonestia.apocalypse.Apocalypse;
 import ru.dragonestia.apocalypse.chat.sender.PlayerMessage;
 import ru.dragonestia.apocalypse.chat.sender.ServerMessage;

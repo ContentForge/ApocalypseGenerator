@@ -20,13 +20,11 @@ import cn.nukkit.network.protocol.DataPacket;
 import cn.nukkit.network.protocol.StartGamePacket;
 import ru.dragonestia.apocalypse.Apocalypse;
 import ru.dragonestia.apocalypse.item.ApocalypseID;
-import ru.dragonestia.apocalypse.item.PlasticItem;
 import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
 import ru.nukkitx.forms.elements.ImageType;
 import ru.nukkitx.forms.elements.SimpleForm;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class MainListener implements Listener {

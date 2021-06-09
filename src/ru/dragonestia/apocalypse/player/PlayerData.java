@@ -2,7 +2,6 @@ package ru.dragonestia.apocalypse.player;
 
 import cn.nukkit.Player;
 import cn.nukkit.item.Item;
-import cn.nukkit.level.Sound;
 import cn.nukkit.network.protocol.PlaySoundPacket;
 import cn.nukkit.potion.Effect;
 import cn.nukkit.utils.Config;

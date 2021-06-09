@@ -1,7 +1,6 @@
 package ru.dragonestia.apocalypse.storms.defaults;
 
 import cn.nukkit.Player;
-import cn.nukkit.level.Sound;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.potion.Effect;
 import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
