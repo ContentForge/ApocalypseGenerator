@@ -3,3 +3,5 @@ author: qPexLegendary
 version: 1.0.0
 api: 1.0.9
 main: ru.dragonestia.apocalypse.Apocalypse
+depend:
+  - ExpoCraft
