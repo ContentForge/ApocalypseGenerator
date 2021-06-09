@@ -15,6 +15,7 @@ import cn.nukkit.item.Item;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Sound;
 import cn.nukkit.level.biome.Biome;
+import cn.nukkit.network.protocol.ContainerOpenPacket;
 import cn.nukkit.network.protocol.DataPacket;
 import cn.nukkit.network.protocol.StartGamePacket;
 import ru.dragonestia.apocalypse.Apocalypse;
@@ -22,6 +23,8 @@ import ru.dragonestia.apocalypse.item.ApocalypseID;
 import ru.dragonestia.apocalypse.item.PlasticItem;
 import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
+import ru.nukkitx.forms.elements.ImageType;
+import ru.nukkitx.forms.elements.SimpleForm;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -127,6 +130,49 @@ public class MainListener implements Listener {
 
         event.setDrops(new Item[]{drop});
         event.getBlock().getLevel().addSound(event.getBlock(), Sound.MOB_ZOMBIE_WOODBREAK);
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onWorkbenchTap(PlayerInteractEvent event){
+        if(event.isCancelled() || !event.getAction().equals(PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) || event.getBlock().getId() != Item.CRAFTING_TABLE) return;
+        Player player = event.getPlayer();
+
+        new SimpleForm("Верстак")
+                .addButton("Классическое создание предметов", ImageType.PATH, "textures/blocks/crafting_table_top")
+                .addButton("Материалы", ImageType.PATH, "textures/items/cloth")
+                .addButton("Расходники", ImageType.PATH, "textures/items/upgrade/chip")
+                .addButton("Оружейный станок", ImageType.PATH, "textures/items/weapon/ak")
+                .addButton("Блоки", ImageType.PATH, "textures/ui/icon_recipe_construction")
+                .send(player, (p, f, data) -> {
+                    switch (data){
+                        case 0: //Классическое создание предметов
+                            player.craftingType = 1;
+                            ContainerOpenPacket pk = new ContainerOpenPacket();
+                            pk.windowId = -1;
+                            pk.type = 1;
+                            pk.x = (int)event.getBlock().x;
+                            pk.y = (int)event.getBlock().y;
+                            pk.z = (int)event.getBlock().z;
+                            pk.entityId = player.getId();
+                            player.dataPacket(pk);
+                            break;
+
+                        case 1: //TODO: Материалы
+                            break;
+
+                        case 2: //TODO: Расходники
+                            break;
+
+                        case 3: //TODO: Оружейный станок
+                            break;
+
+                        case 4: //TODO: Блоки
+                            break;
+
+                    }
+                });
+
+        event.setCancelled(true);
     }
 
 }
