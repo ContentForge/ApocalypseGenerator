@@ -135,7 +135,7 @@ public class MainListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onWorkbenchTap(PlayerInteractEvent event){
-        if(event.isCancelled() || !event.getAction().equals(PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) || event.getBlock().getId() != Item.CRAFTING_TABLE) return;
+        if(event.isCancelled() || !event.getAction().equals(PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) || event.getBlock().getId() != Item.CRAFTING_TABLE || event.getPlayer().isSneaking()) return;
         Player player = event.getPlayer();
         ExpoCraft expo = ExpoCraftKt.getInstance();
 
