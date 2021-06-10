@@ -1,5 +1,8 @@
 package ru.dragonestia.apocalypse.level;
 
+import cn.nukkit.blockentity.BlockEntity;
+import cn.nukkit.blockentity.BlockEntityChest;
+import cn.nukkit.inventory.BaseInventory;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.biome.Biome;
@@ -10,6 +13,7 @@ import cn.nukkit.level.generator.noise.nukkit.d.SimplexD;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
 import cn.nukkit.math.Vector3;
+import cn.nukkit.nbt.tag.CompoundTag;
 import ru.dragonestia.apocalypse.Apocalypse;
 import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.biome.AshBiome;
@@ -18,10 +22,7 @@ import ru.dragonestia.apocalypse.level.populator.*;
 import ru.dragonestia.apocalypse.util.Pair;
 import ru.dragonestia.apocalypse.util.random.Fortune;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class ApocalypseGenerator extends Generator {
 
@@ -72,6 +73,7 @@ public class ApocalypseGenerator extends Generator {
                 new BedrockGradient(),
                 new SectionPopulator(random, chunkManager, cityNoise),
                 new MushroomCave(random),
+                new Bunker(random, cityNoise),
         };
         biomes = new Fortune<>(random);
         biomes.items.addAll(Arrays.asList(
@@ -148,6 +150,15 @@ public class ApocalypseGenerator extends Generator {
     private Biome generateBiome(int x, int z){
         double noise = (simplex.getNoise2D(x / 2000.0, z / 2000.0) + 1) / 2;
         return biomes.roll((int)(biomesWeight * noise));
+    }
+
+    public static void fillChest(Vector3 chunkPos, FullChunk chunk, Collection<Item> items){
+        Vector3 pos = chunkPos.add(new Vector3((double)(chunk.getX() * 16) + 0.5D, 0.0D, (double)(chunk.getZ() * 16) + 0.5D));
+        CompoundTag nbt = BlockEntity.getDefaultCompound(pos, "Chest");
+        BlockEntityChest chest = (BlockEntityChest)BlockEntityChest.createBlockEntity("Chest", chunk, nbt, new Object[0]);
+        BaseInventory inventory = chest.getInventory();
+
+        for(Item item: items) inventory.addItem(item);
     }
 
 }
