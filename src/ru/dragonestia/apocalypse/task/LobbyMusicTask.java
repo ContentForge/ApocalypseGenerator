@@ -31,7 +31,6 @@ public class LobbyMusicTask extends PluginTask<Apocalypse> {
 
     public void joinToLobby(Player player, int offset){
         if(players.containsKey(player) && players.get(player) > System.currentTimeMillis() / 1000L + offset) return;
-        stopAllSounds(player);
         players.put(player, System.currentTimeMillis() / 1000L + offset);
     }
 
