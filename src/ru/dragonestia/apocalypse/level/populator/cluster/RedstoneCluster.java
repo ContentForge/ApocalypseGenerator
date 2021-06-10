@@ -24,12 +24,12 @@ public class RedstoneCluster implements Cluster {
 
     @Override
     public int getMaxLevel() {
-        return 10;
+        return 35;
     }
 
     @Override
     public int getMinLevel() {
-        return 35;
+        return 10;
     }
 
 }
