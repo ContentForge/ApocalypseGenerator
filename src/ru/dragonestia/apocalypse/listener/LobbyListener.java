@@ -50,7 +50,7 @@ public class LobbyListener implements Listener {
     public void onDataPacketSend(DataPacketSendEvent event) {
         DataPacket packet = event.getPacket();
         if (packet instanceof StartGamePacket) {
-            if(!isNotInLobby(event.getPlayer())) main.getLobbyMusicTask().joinToLobby(event.getPlayer());
+            if(!isNotInLobby(event.getPlayer())) main.getLobbyMusicTask().joinToLobby(event.getPlayer(), 10);
         }
     }
 
