@@ -46,6 +46,8 @@ class PlayCommand(private val main: Apocalypse) : Command("play", "Начать 
         player.setGamemode(0)
         player.sendMessage("§eТелепортирование...")
 
+        main.lobbyMusicTask.leaveFromLobby(player)
+
         main.server.scheduler.scheduleDelayedTask(PlayerSpawnTask(main, player), 60)
     }
 

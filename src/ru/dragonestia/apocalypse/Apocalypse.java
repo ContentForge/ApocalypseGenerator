@@ -25,6 +25,7 @@ import ru.dragonestia.apocalypse.listener.ChatListener;
 import ru.dragonestia.apocalypse.listener.MainListener;
 import ru.dragonestia.apocalypse.storms.GlobalEvents;
 import ru.dragonestia.apocalypse.task.IllnessTask;
+import ru.dragonestia.apocalypse.task.LobbyMusicTask;
 import ru.dragonestia.apocalypse.workshop.BlocksWorkshop;
 import ru.dragonestia.apocalypse.workshop.MaterialsWorkshop;
 import ru.dragonestia.apocalypse.workshop.UpgradesWorkshop;
@@ -43,6 +44,7 @@ public class Apocalypse extends PluginBase {
     private final PlayerManager playerManager = new PlayerManager(this);
     private Level gameLevel;
     private final GlobalEvents globalEvents = new GlobalEvents(this);
+    private final LobbyMusicTask lobbyMusicTask = new LobbyMusicTask(this);
 
     @Override
     public void onLoad() {
@@ -108,13 +110,16 @@ public class Apocalypse extends PluginBase {
         gameRules.setGameRule(GameRule.SHOW_DEATH_MESSAGE, false);
         gameRules.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
 
+        globalEvents.start();
+        getServer().getScheduler().scheduleRepeatingTask(new IllnessTask(this), 20 * 60 * 3);
+        getServer().getScheduler().scheduleRepeatingTask(lobbyMusicTask, 20);
+
         for(Player player: getServer().getOnlinePlayers().values()){
             playerManager.initPlayer(player);
             initScoreboard(player);
-        }
 
-        globalEvents.start();
-        getServer().getScheduler().scheduleRepeatingTask(new IllnessTask(this), 20 * 60 * 3);
+            if(player.getLevel().equals(getServer().getDefaultLevel())) lobbyMusicTask.joinToLobby(player);
+        }
 
         getServer().getNetwork().setName("§l[§cD§f] §4Apоcalypse");
 
@@ -173,4 +178,8 @@ public class Apocalypse extends PluginBase {
                 }, 1).show();
     }
 
+    public LobbyMusicTask getLobbyMusicTask() {
+        return lobbyMusicTask;
+    }
+    
 }

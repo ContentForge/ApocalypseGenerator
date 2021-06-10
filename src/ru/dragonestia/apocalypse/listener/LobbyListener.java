@@ -9,7 +9,10 @@ import cn.nukkit.event.block.ItemFrameDropItemEvent;
 import cn.nukkit.event.entity.EntityDamageEvent;
 import cn.nukkit.event.entity.EntityExplodeEvent;
 import cn.nukkit.event.player.*;
+import cn.nukkit.event.server.DataPacketSendEvent;
 import cn.nukkit.math.Vector3;
+import cn.nukkit.network.protocol.DataPacket;
+import cn.nukkit.network.protocol.StartGamePacket;
 import ru.dragonestia.apocalypse.Apocalypse;
 
 import cn.nukkit.level.Position;
@@ -31,6 +34,23 @@ public class LobbyListener implements Listener {
             player.setNameTagAlwaysVisible(true);
             player.teleport(new Vector3(567.5D, 21.0D, 419.5D));
             player.setGamemode(2);
+
+        }
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event){
+        Player player = event.getPlayer();
+        if(isNotInLobby(player)) return;
+
+        main.getLobbyMusicTask().leaveFromLobby(player);
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onDataPacketSend(DataPacketSendEvent event) {
+        DataPacket packet = event.getPacket();
+        if (packet instanceof StartGamePacket) {
+            if(!isNotInLobby(event.getPlayer())) main.getLobbyMusicTask().joinToLobby(event.getPlayer());
         }
     }
 
@@ -40,6 +60,7 @@ public class LobbyListener implements Listener {
     public void onRespawn(PlayerRespawnEvent event) {
         if (!this.isNotInLobby(event.getPlayer())) {
             event.setRespawnPosition(new Position(566.5D, 21.0D, 418.5D, this.main.getServer().getLevelByName("lobby")));
+            main.getLobbyMusicTask().joinToLobby(event.getPlayer());
         }
     }
 
