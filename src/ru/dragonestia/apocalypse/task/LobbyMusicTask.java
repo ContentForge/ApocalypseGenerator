@@ -49,7 +49,7 @@ public class LobbyMusicTask extends PluginTask<Apocalypse> {
             pk.x = player.getFloorX();
             pk.y = player.getFloorY();
             pk.z = player.getFloorZ();
-            pk.volume = 0.25f;
+            pk.volume = 0.1f;
             pk.pitch = 1f;
             pk.name = MUSIC_NAME;
             player.dataPacket(pk);
