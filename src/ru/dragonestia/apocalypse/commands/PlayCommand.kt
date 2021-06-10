@@ -5,6 +5,7 @@ import cn.nukkit.command.Command
 import cn.nukkit.command.CommandSender
 import cn.nukkit.item.Item
 import cn.nukkit.level.Position
+import cn.nukkit.potion.Effect
 import cn.nukkit.scheduler.PluginTask
 import ru.dragonestia.apocalypse.Apocalypse
 import ru.nukkitx.forms.elements.SimpleForm
@@ -45,6 +46,8 @@ class PlayCommand(private val main: Apocalypse) : Command("play", "Начать 
         player.extinguish()
         player.setGamemode(0)
         player.sendMessage("§eТелепортирование...")
+        player.addEffect(Effect.getEffect(Effect.NIGHT_VISION).setDuration(600).setVisible(false))
+        player.addEffect(Effect.getEffect(Effect.BLINDNESS).setDuration(600).setVisible(false))
 
         main.lobbyMusicTask.leaveFromLobby(player)
 
@@ -63,6 +66,7 @@ class PlayerSpawnTask(owner: Apocalypse, val player: Player) : PluginTask<Apocal
         player.level.setBlockAt(player.floorX, player.floorY, player.floorZ, 0)
         player.level.setBlockAt(player.floorX, player.floorY + 1, player.floorZ, 0)
 
+        player.removeAllEffects()
         val inv = player.inventory
         inv.addItem(Item.get(274, 0, 3))
         inv.addItem(Item.get(282, 0, 4))
