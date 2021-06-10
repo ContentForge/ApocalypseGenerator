@@ -69,6 +69,8 @@ public class LobbyListener implements Listener {
         event.getEntity().setSpawn(new Position(566.5D, 21.0D, 418.5D, this.main.getServer().getLevelByName("lobby")));
         event.getEntity().setGamemode(2);
         event.getEntity().setNameTagAlwaysVisible(true);
+
+        main.getLobbyMusicTask().joinToLobby(event.getEntity());
     }
 
     @EventHandler
