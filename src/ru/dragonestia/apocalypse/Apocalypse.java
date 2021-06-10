@@ -25,6 +25,11 @@ import ru.dragonestia.apocalypse.listener.ChatListener;
 import ru.dragonestia.apocalypse.listener.MainListener;
 import ru.dragonestia.apocalypse.storms.GlobalEvents;
 import ru.dragonestia.apocalypse.task.IllnessTask;
+import ru.dragonestia.apocalypse.workshop.BlocksWorkshop;
+import ru.dragonestia.apocalypse.workshop.MaterialsWorkshop;
+import ru.dragonestia.apocalypse.workshop.UpgradesWorkshop;
+import ru.dragonestia.expo.ExpoCraft;
+import ru.dragonestia.expo.ExpoCraftKt;
 import ru.jl1mbo.scoreboard.manager.ScoreboardManager;
 
 import java.text.DecimalFormat;
@@ -112,6 +117,11 @@ public class Apocalypse extends PluginBase {
         getServer().getScheduler().scheduleRepeatingTask(new IllnessTask(this), 20 * 60 * 3);
 
         getServer().getNetwork().setName("§l[§cD§f] §4Apоcalypse");
+
+        ExpoCraft expo = ExpoCraftKt.getInstance();
+        expo.getWorkshopManager().registerWorkshop(new MaterialsWorkshop(expo));
+        expo.getWorkshopManager().registerWorkshop(new UpgradesWorkshop(expo));
+        expo.getWorkshopManager().registerWorkshop(new BlocksWorkshop(expo));
     }
 
     @Override

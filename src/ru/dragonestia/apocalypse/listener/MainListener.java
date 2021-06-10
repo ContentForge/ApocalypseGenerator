@@ -22,9 +22,12 @@ import ru.dragonestia.apocalypse.Apocalypse;
 import ru.dragonestia.apocalypse.item.ApocalypseID;
 import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
+import ru.dragonestia.expo.ExpoCraft;
+import ru.dragonestia.expo.ExpoCraftKt;
 import ru.nukkitx.forms.elements.ImageType;
 import ru.nukkitx.forms.elements.SimpleForm;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class MainListener implements Listener {
@@ -134,6 +137,7 @@ public class MainListener implements Listener {
     public void onWorkbenchTap(PlayerInteractEvent event){
         if(event.isCancelled() || !event.getAction().equals(PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) || event.getBlock().getId() != Item.CRAFTING_TABLE) return;
         Player player = event.getPlayer();
+        ExpoCraft expo = ExpoCraftKt.getInstance();
 
         new SimpleForm("Верстак")
                 .addButton("Классическое создание предметов", ImageType.PATH, "textures/blocks/crafting_table_top")
@@ -155,16 +159,20 @@ public class MainListener implements Listener {
                             player.dataPacket(pk);
                             break;
 
-                        case 1: //TODO: Материалы
+                        case 1: //Материалы
+                            expo.getWorkshopManager().getWorkshops().get("t_materials").send(Objects.requireNonNull(expo.getPlayerDataManager().getData(player)));
                             break;
 
-                        case 2: //TODO: Расходники
+                        case 2: //Расходники
+                            expo.getWorkshopManager().getWorkshops().get("t_upgrades").send(Objects.requireNonNull(expo.getPlayerDataManager().getData(player)));
                             break;
 
                         case 3: //TODO: Оружейный станок
+                            player.sendMessage("Данный раздел недоступен, так как находится в разработке.");
                             break;
 
-                        case 4: //TODO: Блоки
+                        case 4: //Блоки
+                            expo.getWorkshopManager().getWorkshops().get("t_blocks").send(Objects.requireNonNull(expo.getPlayerDataManager().getData(player)));
                             break;
 
                     }
