@@ -10,8 +10,7 @@ import cn.nukkit.level.generator.Generator;
 import cn.nukkit.plugin.PluginBase;
 import ru.dragonestia.apocalypse.commands.*;
 import ru.dragonestia.apocalypse.level.populator.cluster.*;
-import ru.dragonestia.apocalypse.listener.CheatListener;
-import ru.dragonestia.apocalypse.listener.LobbyListener;
+import ru.dragonestia.apocalypse.listener.*;
 import ru.dragonestia.apocalypse.player.PlayerManager;
 import ru.dragonestia.apocalypse.player.PlayerData;
 import ru.dragonestia.apocalypse.item.ApocalypseID;
@@ -21,8 +20,6 @@ import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.biome.CommonBiome;
 import ru.dragonestia.apocalypse.level.biome.AshBiome;
 import ru.dragonestia.apocalypse.level.biome.FireBiome;
-import ru.dragonestia.apocalypse.listener.ChatListener;
-import ru.dragonestia.apocalypse.listener.MainListener;
 import ru.dragonestia.apocalypse.storms.GlobalEvents;
 import ru.dragonestia.apocalypse.task.IllnessTask;
 import ru.dragonestia.apocalypse.task.LobbyMusicTask;
@@ -90,6 +87,7 @@ public class Apocalypse extends PluginBase {
         getServer().getPluginManager().registerEvents(new ChatListener(this), this);
         getServer().getPluginManager().registerEvents(new CheatListener(this), this);
         getServer().getPluginManager().registerEvents(new LobbyListener(this), this);
+        getServer().getPluginManager().registerEvents(new IllnessListener(), this);
 
         getServer().getCommandMap().registerAll("", Arrays.asList(
                 new ItemDataCommand(),
