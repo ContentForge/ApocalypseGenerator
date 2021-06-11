@@ -13,6 +13,7 @@ public class IllnessListener implements Listener {
     public void onDamageTaken(EntityDamageEvent event){
         if(event.isCancelled() || !(event.getEntity() instanceof Player)) return;
         Player player = (Player) event.getEntity();
+        if(player.getLevel().equals(player.getServer().getDefaultLevel())) return;
 
         Effect effect;
         fallDamage:
