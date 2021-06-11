@@ -20,17 +20,17 @@ public class DiamondCluster implements Cluster {
 
     @Override
     public int getClustersCountByBiome(ApocalypseBiome biome) {
-        return biome instanceof AshBiome? 10 : 0;
+        return biome instanceof AshBiome? 4 : 0;
     }
 
     @Override
     public int getMaxLevel() {
-        return 60;
+        return 49;
     }
 
     @Override
     public int getMinLevel() {
-        return 40;
+        return 35;
     }
 
 }
