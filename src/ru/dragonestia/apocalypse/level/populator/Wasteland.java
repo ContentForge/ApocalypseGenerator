@@ -5,6 +5,7 @@ import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.noise.nukkit.d.SimplexD;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
+import ru.dragonestia.apocalypse.level.ApocalypseGenerator;
 import ru.dragonestia.apocalypse.level.populator.wastelands.RadioTower;
 import ru.dragonestia.apocalypse.level.populator.wastelands.StoneHouse;
 import ru.dragonestia.apocalypse.level.populator.wastelands.WastelandPopulator;
@@ -27,7 +28,7 @@ public class Wasteland extends Populator {
 
     @Override
     public void populate(ChunkManager chunkManager, int chunkX, int chunkZ, NukkitRandom nukkitRandom, FullChunk chunk) {
-        if(cityNoise.getNoise2D(chunkX / 100.0, chunkZ / 100.0) > 0) return;
+        if(ApocalypseGenerator.isCity(cityNoise, chunkX, chunkZ)) return;
 
         for(WastelandPopulator populator: populators){
             if(!populator.checkPlace(chunkX, chunkZ, chunk)) continue;

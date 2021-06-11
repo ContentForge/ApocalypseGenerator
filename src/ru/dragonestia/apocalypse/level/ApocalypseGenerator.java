@@ -163,4 +163,9 @@ public class ApocalypseGenerator extends Generator {
         for(Item item: items) inventory.addItem(item);
     }
 
+    public static boolean isCity(SimplexD cityNoise, int chunkX, int chunkZ){
+        if(chunkX > 0 && chunkX * 16 < 1000 && chunkZ > 0 && chunkZ * 16 < 1000) return true;
+        return cityNoise.getNoise2D(chunkX / 100.0, chunkZ / 100.0) > 0;
+    }
+
 }
