@@ -32,7 +32,7 @@ public class Bunker extends Populator {
 
     @Override
     public void populate(ChunkManager chunkManager, int chunkX, int chunkZ, NukkitRandom nukkitRandom, FullChunk chunk) {
-        if(chunk.getBiomeId(7, 7) != ApocalypseGenerator.COMMON_BIOME || random.nextFloat() > 0.015f) return;
+        if(chunk.getBiomeId(7, 7) != ApocalypseGenerator.FIRE_BIOME || random.nextFloat() > 0.015f) return;
         int h = random.nextInt(5) + 20;
 
         for(int x = 0; x < 16; x++)
