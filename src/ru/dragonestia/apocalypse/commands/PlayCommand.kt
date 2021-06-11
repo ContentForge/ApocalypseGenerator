@@ -8,6 +8,7 @@ import cn.nukkit.level.Position
 import cn.nukkit.potion.Effect
 import cn.nukkit.scheduler.PluginTask
 import ru.dragonestia.apocalypse.Apocalypse
+import ru.nukkitx.forms.elements.ImageType
 import ru.nukkitx.forms.elements.SimpleForm
 
 class PlayCommand(private val main: Apocalypse) : Command("play", "Начать игру", "/play") {
@@ -25,8 +26,13 @@ class PlayCommand(private val main: Apocalypse) : Command("play", "Начать 
             return
         }
 
-        SimpleForm("Играть", "Здесь будет позже написан какой-то текст...")
-                .addButton("Случайное появление")
+        SimpleForm("Играть",
+                "Если вы выберите пункт §6Случайное появление§f, то вы появитесь глубоко под землей. " +
+                        "Вы получите стартовый набор из §33 каменных кирок§f и §34 чашек с грибным супом§f. " +
+                        "Еще у вас будет §3книга§f с маленьким описанием всего того, что ждет вас впереди и §lлучше ее прочесть - там полезная информация§r.\n\n" +
+                        "§l§eПомните, что после конца света §gначала процветать анархия§e и любой другой игрок представляет огромную опасность для вас.\n Удачи!"
+        )
+                .addButton("Случайное появление", ImageType.PATH, "textures/ui/dragonestia/server")
                 .send(player) { _, _, data ->
                     when(data){
                         0 -> spawn(player)
