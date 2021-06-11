@@ -25,7 +25,8 @@ public class SectionPopulator extends Populator {
         houses = new HouseSection[]{
             new BrokenHouse(random, chunkManager),
                 new VeryBrokenHouse(random, chunkManager),
-                new BrickHouse(random, chunkManager)
+                new BrickHouse(random, chunkManager),
+                new BrickHouse2(random, chunkManager),
         };
     }
 
