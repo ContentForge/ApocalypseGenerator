@@ -11,7 +11,7 @@ public class IllnessListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onDamageTaken(EntityDamageEvent event){
-        if(!(event.getEntity() instanceof Player)) return;
+        if(event.isCancelled() || !(event.getEntity() instanceof Player)) return;
         Player player = (Player) event.getEntity();
 
         Effect effect;
