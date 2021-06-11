@@ -1,6 +1,10 @@
 package ru.dragonestia.apocalypse;
 
 import cn.nukkit.Player;
+import cn.nukkit.command.Command;
+import cn.nukkit.command.CommandMap;
+import cn.nukkit.command.SimpleCommandMap;
+import cn.nukkit.command.defaults.*;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.GameRules;
@@ -90,7 +94,28 @@ public class Apocalypse extends PluginBase {
         getServer().getPluginManager().registerEvents(new LobbyListener(this), this);
         getServer().getPluginManager().registerEvents(new IllnessListener(), this);
 
-        getServer().getCommandMap().registerAll("", Arrays.asList(
+        SimpleCommandMap commandMap = getServer().getCommandMap();
+        for(Command command: commandMap.getCommands().values()){
+            command.unregister(commandMap);
+        }
+
+
+        commandMap.registerAll("", Arrays.asList(
+                //Спандартные команды
+                new OpCommand("op"),
+                new GamemodeCommand("gamemode"),
+                new DeopCommand("deop"),
+                new KickCommand("kick"),
+                new TeleportCommand("tp"),
+                new SayCommand("say"),
+                new StatusCommand("status"),
+                new GarbageCollectorCommand("garbage"),
+                new GiveCommand("item"),
+                new EffectCommand("effect"),
+                new ReloadCommand("reload"),
+                new SaveCommand("save"),
+
+                //Команды плагина
                 new ItemDataCommand(),
                 new RadioCommand(this),
                 new SendRadioCommand(this),
