@@ -96,6 +96,7 @@ public class MainListener implements Listener {
         Player player = event.getEntity();
 
         main.getPlayerManager().get(player).onDeath();
+        event.setDeathMessage("");
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
