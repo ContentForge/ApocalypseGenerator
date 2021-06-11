@@ -45,7 +45,7 @@ public class IllnessListener implements Listener {
             effect = Effect.getEffect(Effect.WEAKNESS).setAmplifier(2).setDuration(20 * 50);
         }
 
-        if(event == null) return;
+        if(effect == null) return;
         player.addEffect(effect.setVisible(false));
     }
 }
