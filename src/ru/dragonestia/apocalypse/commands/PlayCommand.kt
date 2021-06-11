@@ -8,6 +8,7 @@ import cn.nukkit.level.Position
 import cn.nukkit.potion.Effect
 import cn.nukkit.scheduler.PluginTask
 import ru.dragonestia.apocalypse.Apocalypse
+import ru.dragonestia.apocalypse.item.ApocalypseID
 import ru.nukkitx.forms.elements.ImageType
 import ru.nukkitx.forms.elements.SimpleForm
 
@@ -76,6 +77,7 @@ class PlayerSpawnTask(owner: Apocalypse, val player: Player) : PluginTask<Apocal
         val inv = player.inventory
         inv.addItem(Item.get(274, 0, 3))
         inv.addItem(Item.get(282, 0, 4))
+        inv.addItem(Item.get(ApocalypseID.GUIDE_BOOK))
     }
 
 }
