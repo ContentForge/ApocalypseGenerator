@@ -19,6 +19,7 @@ import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.biome.AshBiome;
 import ru.dragonestia.apocalypse.level.biome.CommonBiome;
 import ru.dragonestia.apocalypse.level.populator.*;
+import ru.dragonestia.apocalypse.level.populator.wastelands.RadioTower;
 import ru.dragonestia.apocalypse.util.Pair;
 import ru.dragonestia.apocalypse.util.random.Fortune;
 
@@ -74,7 +75,7 @@ public class ApocalypseGenerator extends Generator {
                 new SectionPopulator(random, chunkManager, cityNoise),
                 new MushroomCave(random),
                 new Bunker(random, cityNoise),
-                new RadioTower(random, cityNoise),
+                new Wasteland(random, cityNoise),
         };
         biomes = new Fortune<>(random);
         biomes.items.addAll(Arrays.asList(

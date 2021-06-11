@@ -1,9 +1,8 @@
-package ru.dragonestia.apocalypse.level.populator;
+package ru.dragonestia.apocalypse.level.populator.wastelands;
 
 import cn.nukkit.item.Item;
 import cn.nukkit.level.ChunkManager;
 import cn.nukkit.level.format.FullChunk;
-import cn.nukkit.level.generator.noise.nukkit.d.SimplexD;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
 import cn.nukkit.math.Vector3;
@@ -13,19 +12,16 @@ import ru.dragonestia.apocalypse.level.ApocalypseGenerator;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RadioTower extends Populator {
+public class RadioTower extends Populator implements WastelandPopulator {
 
     private final Random random;
-    private final SimplexD cityNoise;
 
-    public RadioTower(Random random, SimplexD cityNoise){
+    public RadioTower(Random random){
         this.random = random;
-        this.cityNoise = cityNoise;
     }
 
     @Override
     public void populate(ChunkManager chunkManager, int chunkX, int chunkZ, NukkitRandom nukkitRandom, FullChunk chunk) {
-        if(cityNoise.getNoise2D(chunkX / 100.0, chunkZ / 100.0) > 0 || chunk.getBiomeId(5, 5) != ApocalypseGenerator.COMMON_BIOME || random.nextFloat() > 0.01f) return;
         int x = 4 + random.nextInt(5);
         int z = 4 + random.nextInt(5);
         int y = chunk.getHighestBlockAt(x, z) - 3;
@@ -125,6 +121,11 @@ public class RadioTower extends Populator {
         for(int i = 0, iMax = 10 + random.nextInt(6); i < iMax; i++, y++){
             chunk.setBlockId(x, y, z, Item.IRON_BARS);
         }
+    }
+
+    @Override
+    public boolean checkPlace(int chunkX, int chunkZ, FullChunk chunk) {
+        return !(chunk.getBiomeId(5, 5) != ApocalypseGenerator.COMMON_BIOME || random.nextFloat() > 0.01f);
     }
 
 }
