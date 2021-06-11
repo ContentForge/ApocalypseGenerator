@@ -5,7 +5,7 @@ import java.util.Random;
 public enum RadioactiveLevel {
 
     ZERO(0),
-    LOW(5),
+    LOW(10),
     NORMAL(100),
     HIGH(5000),
     CRITICAL(10000);
