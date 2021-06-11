@@ -46,6 +46,6 @@ public class IllnessListener implements Listener {
         }
 
         if(event == null) return;
-        player.addEffect(effect);
+        player.addEffect(effect.setVisible(false));
     }
 }
