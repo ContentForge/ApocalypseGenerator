@@ -30,6 +30,7 @@ public class StoneHouse extends Populator implements WastelandPopulator {
         for(int x = 7; x < 13; x++)
             for(int z = 5; z < 14; z++)
                 for(int y = 0; y < 4; y++){
+                    if(y == 3 && random.nextFloat() > 0.6f) continue;
                     if(z == 5 || z == 13){
                         chunk.setBlockId(x, h + y, z, Item.BRICKS);
                         continue;
