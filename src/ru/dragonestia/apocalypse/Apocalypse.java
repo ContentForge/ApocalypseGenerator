@@ -76,6 +76,7 @@ public class Apocalypse extends PluginBase {
                 new GoldCluster(playerManager.random),
                 new ScrapCluster(),
                 new RedstoneCluster(),
+                new DiamondCluster(),
         };
 
         Generator.addGenerator(ApocalypseGenerator.class, "apocalypse", Generator.TYPE_INFINITE);
