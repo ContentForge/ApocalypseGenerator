@@ -74,6 +74,7 @@ public class ApocalypseGenerator extends Generator {
                 new SectionPopulator(random, chunkManager, cityNoise),
                 new MushroomCave(random),
                 new Bunker(random, cityNoise),
+                new RadioTower(random, cityNoise),
         };
         biomes = new Fortune<>(random);
         biomes.items.addAll(Arrays.asList(
