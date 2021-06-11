@@ -85,7 +85,7 @@ public class ApocalypseGenerator extends Generator {
         ));
         biomesWeight = biomes.getAllWeight() * 2;
 
-        nukkitRandom.setSeed("ЕБАНУТЬСЯ".hashCode());
+        nukkitRandom.setSeed("ЕБАНУТЬСЯ".hashCode() + 1);
     }
 
     @Override
@@ -150,6 +150,7 @@ public class ApocalypseGenerator extends Generator {
     }
 
     private Biome generateBiome(int x, int z){
+        if(x > 0 && x < 1000 && z > 0 && z < 1000) return Biome.getBiome(ApocalypseGenerator.COMMON_BIOME);
         double noise = (simplex.getNoise2D(x / 2000.0, z / 2000.0) + 1) / 2;
         return biomes.roll((int)(biomesWeight * noise));
     }
@@ -166,6 +167,12 @@ public class ApocalypseGenerator extends Generator {
     public static boolean isCity(SimplexD cityNoise, int chunkX, int chunkZ){
         if(chunkX > 0 && chunkX * 16 < 1000 && chunkZ > 0 && chunkZ * 16 < 1000) return true;
         return cityNoise.getNoise2D(chunkX / 100.0, chunkZ / 100.0) > 0;
+    }
+
+    public static int getHeightBlockAt(int x, int z, FullChunk chunk){
+        int y = chunk.getHighestBlockAt(x, z);
+        while (chunk.getBlockId(x, y, z) == 0) y--;
+        return y;
     }
 
 }

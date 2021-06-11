@@ -5,6 +5,7 @@ import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.format.FullChunk;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
+import ru.dragonestia.apocalypse.level.ApocalypseGenerator;
 import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
 import ru.dragonestia.apocalypse.level.populator.cluster.Cluster;
 
@@ -29,7 +30,7 @@ public class Ores extends Populator {
             for(int i = 0, n = cluster.getClustersCountByBiome((ApocalypseBiome) biome); i < n; i++){
                 int x = random.nextInt(16), z = random.nextInt(16);
                 int yMin = cluster.getMinLevel(), yMax = cluster.getMaxLevel(), delta = yMax - yMin;
-                int y = yMin + (random.nextInt(Math.min(delta, chunk.getHighestBlockAt(x, z))));
+                int y = yMin + (random.nextInt(Math.min(delta, ApocalypseGenerator.getHeightBlockAt(x, z, chunk))));
                 chunk.setBlockId(x, y, z, cluster.getBlockId());
             }
         }
