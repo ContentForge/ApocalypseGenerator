@@ -6,6 +6,7 @@ import cn.nukkit.level.generator.noise.nukkit.d.SimplexD;
 import cn.nukkit.level.generator.populator.type.Populator;
 import cn.nukkit.math.NukkitRandom;
 import ru.dragonestia.apocalypse.level.populator.wastelands.RadioTower;
+import ru.dragonestia.apocalypse.level.populator.wastelands.StoneHouse;
 import ru.dragonestia.apocalypse.level.populator.wastelands.WastelandPopulator;
 
 import java.util.Random;
@@ -20,6 +21,7 @@ public class Wasteland extends Populator {
 
         populators = new WastelandPopulator[]{
                 new RadioTower(random),
+                new StoneHouse(random),
         };
     }
 
