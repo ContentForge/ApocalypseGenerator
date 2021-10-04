@@ -47,6 +47,7 @@ public class Cave extends Populator {
                 if(random.nextFloat() < 0.03f) chunk.setBlockId(dx, yMin, dz, Item.STONE_WALL);
                 if(random.nextFloat() < 0.03f) chunk.setBlockId(dx, yMax, dz, Item.STONE_WALL);
                 if(random.nextFloat() < 0.03f) chunk.setBlockId(dx, yMin, dz, Item.COBBLE);
+                if(random.nextFloat() < 0.07f) chunk.setBlockId(dx, yMin - 1, dz, Item.DIRT);
                 if(random.nextFloat() < 0.03f) chunk.setBlockId(dx, yMax, dz, Item.COBBLE);
 
                 if(random.nextFloat() < 0.001f) chunk.setBlockId(dx, yMax, dz, Item.GLOWSTONE);
