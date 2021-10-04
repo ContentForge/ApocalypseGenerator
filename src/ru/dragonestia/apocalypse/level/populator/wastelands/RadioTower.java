@@ -99,10 +99,11 @@ public class RadioTower extends Populator implements WastelandPopulator {
 
         chunk.setBlockId(x + 2, y, z, Item.CHEST);
         ArrayList<Item> items = new ArrayList<>();
-        if(random.nextFloat() < 0.35) items.add(Item.get(ApocalypseID.CHIP, 0, 1 + random.nextInt(2)));
-        if(random.nextFloat() < 0.35) items.add(Item.get(ApocalypseID.COPPER_WIRE, 0, 1 + random.nextInt(2)));
-        if(random.nextFloat() < 0.35) items.add(Item.get(ApocalypseID.BATTERY, 0, 1 + random.nextInt(2)));
-        if(items.size() == 0) items.add(Item.get(ApocalypseID.PLASTIC, 0, 1 + random.nextInt(2)));
+        if(random.nextFloat() < 0.5) items.add(Item.get(ApocalypseID.CHIP, 0, 1 + random.nextInt(3)));
+        if(random.nextFloat() < 0.5) items.add(Item.get(ApocalypseID.COPPER_WIRE, 0, 1 + random.nextInt(3)));
+        if(random.nextFloat() < 0.5) items.add(Item.get(ApocalypseID.BATTERY, 0, 1 + random.nextInt(3)));
+        if(random.nextFloat() < 0.5) items.add(Item.get(ApocalypseID.PLASTIC, 0, 1 + random.nextInt(10)));
+        if(random.nextFloat() < 0.5) items.add(Item.get(ApocalypseID.SCRAP, 0, 1 + random.nextInt(10)));
         ApocalypseGenerator.fillChest(new Vector3(x+2, y, z), chunk, items);
 
         placeTower(x+2, y, z+1, chunk);
