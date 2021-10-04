@@ -14,6 +14,7 @@ import cn.nukkit.plugin.PluginBase;
 import ru.dragonestia.apocalypse.commands.*;
 import ru.dragonestia.apocalypse.level.populator.cluster.*;
 import ru.dragonestia.apocalypse.listener.*;
+import ru.dragonestia.apocalypse.network.CameraShakePacket;
 import ru.dragonestia.apocalypse.player.PlayerManager;
 import ru.dragonestia.apocalypse.player.PlayerData;
 import ru.dragonestia.apocalypse.item.ApocalypseID;
@@ -78,6 +79,8 @@ public class Apocalypse extends PluginBase {
         };
 
         Generator.addGenerator(ApocalypseGenerator.class, "apocalypse", Generator.TYPE_INFINITE);
+
+        getServer().getNetwork().registerPacket(CameraShakePacket.NETWORK_ID, CameraShakePacket.class);
     }
 
     @Override
