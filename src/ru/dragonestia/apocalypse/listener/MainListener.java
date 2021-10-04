@@ -100,19 +100,19 @@ public class MainListener implements Listener {
 
         switch (random.nextInt(8)){
             case 0:
-                drop = Item.get(287, 0, random.nextInt(3) + 1);
+                drop = Item.get(287, 0, random.nextInt(20) + 1);
                 break;
             case 1:
-                drop = Item.get(ApocalypseID.PLASTIC, 0, random.nextInt(1) + 1);
+                drop = Item.get(ApocalypseID.PLASTIC, 0, random.nextInt(7) + 1);
                 break;
             case 2:
-                drop = Item.get(ApocalypseID.CLOTH, 0, random.nextInt(2) + 1);
+                drop = Item.get(ApocalypseID.CLOTH, 0, random.nextInt(7) + 1);
                 break;
             case 3:
-                drop = Item.get(ApocalypseID.TIN_NUGGET, 0, random.nextInt(4) + 1);
+                drop = Item.get(ApocalypseID.TIN_NUGGET, 0, random.nextInt(10) + 1);
                 break;
             case 4:
-                drop = Item.get(ApocalypseID.COPPER_NUGGET, 0, random.nextInt(4) + 1);
+                drop = Item.get(ApocalypseID.COPPER_NUGGET, 0, random.nextInt(10) + 1);
                 break;
             case 5:
                 drop = Item.get(ApocalypseID.BATTERY, 0, 1);
