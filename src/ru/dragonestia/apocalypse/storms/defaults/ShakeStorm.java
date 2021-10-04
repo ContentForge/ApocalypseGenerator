@@ -5,6 +5,7 @@ import cn.nukkit.event.entity.EntityDamageEvent;
 import cn.nukkit.level.Sound;
 import cn.nukkit.math.Vector3;
 import cn.nukkit.potion.Effect;
+import ru.dragonestia.apocalypse.network.CameraShakePacket;
 import ru.dragonestia.apocalypse.storms.GlobalEventBase;
 
 
@@ -62,7 +63,7 @@ public class ShakeStorm extends GlobalEventBase {
         if(!player.isSurvival()) return;
         playSound(player, player, Sound.AMBIENT_CAVE, 3F, 0.5f);
 
-        float force;
+        float force = 0;
         if(player.y < 45){
             force = (45 / (float) player.y - 1);
 
@@ -88,6 +89,13 @@ public class ShakeStorm extends GlobalEventBase {
             player.setLastDamageCause(event);
             player.attack(event);
         }else player.setMotion(new Vector3((random.nextFloat() - 0.5f) /10f, 0.05f, (random.nextFloat() - 0.5f) /10f));
+
+        CameraShakePacket pk = new CameraShakePacket();
+        pk.shakeAction = CameraShakePacket.ACTION_ADD;
+        pk.shakeType = CameraShakePacket.TYPE_ROTATIONAL;
+        pk.duration = 0.9f;
+        pk.intensity = force + 0.3f;
+        player.dataPacket(pk);
 
         super.handle(player);
     }
