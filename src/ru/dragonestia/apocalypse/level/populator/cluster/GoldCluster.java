@@ -17,7 +17,7 @@ public class GoldCluster implements Cluster {
 
     @Override
     public int getBlockId() {
-        return Item.IRON_ORE;
+        return Item.GOLD_ORE;
     }
 
     @Override
