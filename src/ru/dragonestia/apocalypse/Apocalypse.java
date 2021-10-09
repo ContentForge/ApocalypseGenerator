@@ -4,6 +4,10 @@ import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.SimpleCommandMap;
 import cn.nukkit.command.defaults.*;
+import cn.nukkit.inventory.ContainerRecipe;
+import cn.nukkit.inventory.FurnaceRecipe;
+import cn.nukkit.inventory.ShapedRecipe;
+import cn.nukkit.inventory.ShapelessRecipe;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.GameRule;
 import cn.nukkit.level.GameRules;
@@ -31,6 +35,7 @@ import ru.jl1mbo.scoreboard.manager.ScoreboardManager;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Apocalypse extends PluginBase {
 
@@ -69,6 +74,13 @@ public class Apocalypse extends PluginBase {
         Biome.biomes[ApocalypseGenerator.ASH_BIOME] = new AshBiome();
         Biome.biomes[ApocalypseGenerator.FIRE_BIOME] = new FireBiome();
         Biome.biomes[ApocalypseGenerator.COMMON_BIOME] = new CommonBiome();
+
+        getServer().addRecipe(new FurnaceRecipe(Item.get(Item.IRON_NUGGET, 0, 1), Item.get(ApocalypseID.SCRAP)));
+        getServer().addRecipe(new FurnaceRecipe(Item.get(Item.IRON_INGOT), Item.get(ApocalypseID.IRON_CLUSTER)));
+        getServer().addRecipe(new FurnaceRecipe(Item.get(ApocalypseID.SULFUR_DUST), Item.get(ApocalypseID.SULFUR_CLUSTER)));
+        getServer().addRecipe(new FurnaceRecipe(Item.get(ApocalypseID.COPPER_INGOT), Item.get(ApocalypseID.COPPER_CLUSTER)));
+        getServer().addRecipe(new FurnaceRecipe(Item.get(ApocalypseID.TIN_INGOT), Item.get(ApocalypseID.TIN_CLUSTER)));
+        getServer().addRecipe(new FurnaceRecipe(Item.get(Item.COAL, 1), Item.get(Item.PLANK)));
 
         clusters = new Cluster[]{
             new IronCluster(playerManager.random),
