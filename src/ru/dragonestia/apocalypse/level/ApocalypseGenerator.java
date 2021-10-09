@@ -120,6 +120,7 @@ public class ApocalypseGenerator extends Generator {
                     }
                     chunk.setBlock(x, y, z, blockId);
                 }
+                chunk.setHeightMap(x, z, yMax-1);
             }
         }
     }
