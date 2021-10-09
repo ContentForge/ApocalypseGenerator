@@ -5,10 +5,10 @@ import java.util.Random;
 public enum RadioactiveLevel {
 
     ZERO(0),
-    LOW(10),
-    NORMAL(100),
-    HIGH(5000),
-    CRITICAL(10000);
+    LOW(30),
+    NORMAL(300),
+    HIGH(6000),
+    CRITICAL(12000);
 
     public final int dose;
     private static final Random random = new Random();
