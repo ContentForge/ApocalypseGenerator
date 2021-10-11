@@ -6,3 +6,4 @@ main: ru.dragonestia.apocalypse.Apocalypse
 depend:
   - FormAPI
   - Scoreboard
+  - ExpoCraft
