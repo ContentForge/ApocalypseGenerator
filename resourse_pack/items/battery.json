@@ -1,6 +1,0 @@
-{"format_version": "1.16.0", 
-"minecraft:item": 
-{"description": 
-{"identifier": "dragonestia:battery"}, 
-"components": {"minecraft:icon": "dragonestia:battery", 
-"minecraft:hand_equipped": false}}}

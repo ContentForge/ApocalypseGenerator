@@ -1,6 +1,0 @@
-{"format_version": "1.16.0", 
-"minecraft:item": 
-{"description": 
-{"identifier": "dragonestia:tin_cluster"}, 
-"components": {"minecraft:icon": "dragonestia:tin_cluster", 
-"minecraft:hand_equipped": false}}}

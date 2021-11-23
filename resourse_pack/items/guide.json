@@ -1,6 +1,0 @@
-{"format_version": "1.16.0", 
-"minecraft:item": 
-{"description": 
-{"identifier": "dragonestia:guide"}, 
-"components": {"minecraft:icon": "dragonestia:guide", 
-"minecraft:hand_equipped": false}}}

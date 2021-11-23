@@ -1,6 +1,0 @@
-{"format_version": "1.16.0", 
-"minecraft:item": 
-{"description": 
-{"identifier": "dragonestia:chip"}, 
-"components": {"minecraft:icon": "dragonestia:chip", 
-"minecraft:hand_equipped": false}}}

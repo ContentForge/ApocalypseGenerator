@@ -1,6 +1,0 @@
-{"format_version": "1.16.0", 
-"minecraft:item": 
-{"description": 
-{"identifier": "dragonestia:iron_cluster"}, 
-"components": {"minecraft:icon": "dragonestia:iron_cluster", 
-"minecraft:hand_equipped": false}}}
