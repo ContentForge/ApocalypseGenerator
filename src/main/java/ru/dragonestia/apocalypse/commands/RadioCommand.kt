@@ -11,7 +11,7 @@ import ru.contentforge.formconstructor.form.element.*
 import ru.dragonestia.apocalypse.Apocalypse
 import ru.dragonestia.apocalypse.item.ApocalypseID
 import ru.dragonestia.apocalypse.player.submodules.Radio
-import ru.nukkitx.ruitems.RuItems
+import ru.dragonestia.expo.Expo
 
 class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио", "/radio") {
 
@@ -86,7 +86,7 @@ class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио"
                 canRepair = false;
                 needItems.append('4')
             }
-            needItems.append("${RuItems.get(item)} ${item.count}шт§f")
+            needItems.append("${Expo.getInstance().itemData[item].name} ${item.count}шт§f")
         }
         val form = SimpleForm(
             "Починка радио",
@@ -253,7 +253,7 @@ class RadioCommand(private val main: Apocalypse) : Command("radio", "Радио"
                 canCraft = false;
                 needItems.append('4')
             }
-            needItems.append("${RuItems.get(item)} ${item.count}шт§f")
+            needItems.append("${Expo.getInstance().itemData[item].name} ${item.count}шт§f")
         }
         for(i in counts){
             if(canCraft && canCraftNext){
