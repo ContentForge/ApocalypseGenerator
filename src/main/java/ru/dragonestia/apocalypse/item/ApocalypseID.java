@@ -25,4 +25,6 @@ public interface ApocalypseID {
 
     int BED = 10019;
 
+    int FIRST_AID_KIT = 10020;
+
 }

@@ -1,4 +1,4 @@
-package ru.dragonestia.apocalypse.workshop;
+package ru.dragonestia.apocalypse.workbench;
 
 import cn.nukkit.Player;
 import cn.nukkit.block.Block;
@@ -14,12 +14,12 @@ import ru.dragonestia.apocalypse.Apocalypse;
 import ru.dragonestia.expo.player.PlayerData;
 import ru.dragonestia.expo.workbench.Workbench;
 
-public class ClassicBench extends Workbench implements Listener {
+public class ClassicWorkbench extends Workbench implements Listener {
 
-    public static final String WORKSHOP_ID = "classic";
+    public static final String WORKBENCH_ID = "classic";
 
-    public ClassicBench(Apocalypse main) {
-        super(WORKSHOP_ID, "Обычный верстак");
+    public ClassicWorkbench(Apocalypse main) {
+        super(WORKBENCH_ID, "Обычный верстак");
 
         main.getServer().getPluginManager().registerEvents(this, main);
     }

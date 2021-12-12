@@ -30,7 +30,7 @@ import ru.dragonestia.apocalypse.storms.GlobalEvents;
 import ru.dragonestia.apocalypse.task.IllnessTask;
 import ru.dragonestia.apocalypse.task.LobbyMusicTask;
 import ru.dragonestia.apocalypse.task.TeleportingTask;
-import ru.dragonestia.apocalypse.workshop.ClassicBench;
+import ru.dragonestia.apocalypse.workbench.ClassicWorkbench;
 import ru.dragonestia.expo.Expo;
 import ru.jl1mbo.scoreboard.manager.ScoreboardManager;
 
@@ -162,7 +162,7 @@ public class Apocalypse extends PluginBase {
         getServer().getNetwork().setName("§l[§cD§f] §4Apоcalypse");
 
         Expo expoCraft = Expo.getInstance();
-        expoCraft.getWorkbenchManager().registerWorkbench(new ClassicBench(this));
+        expoCraft.getWorkbenchManager().registerWorkbench(new ClassicWorkbench(this));
     }
 
     @Override
