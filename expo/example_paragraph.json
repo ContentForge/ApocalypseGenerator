@@ -1,0 +1,13 @@
+{
+  "id": "example_paragraph",
+  "name": "Название главы",
+  "text": "Здесь должен быть написан какой-то текст главы",
+  "icon": "textures/items/diamond",
+  "conditions": [
+    "test 1 2 3"
+  ],
+  "depend": "other_paragraph",
+  "dev": false,
+  "workbench": "example_workshop",
+  "quest":false
+}

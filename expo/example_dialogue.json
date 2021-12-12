@@ -1,0 +1,14 @@
+{
+  "id": "example_dialogue",
+  "text": "Какой-то текст",
+  "buttons": [
+    {
+      "text": "Какой-то текст у кнопки",
+      "action": "none",
+      "conditions": []
+    }
+  ],
+  "conditions": [
+    "test 1 2 3"
+  ]
+}
