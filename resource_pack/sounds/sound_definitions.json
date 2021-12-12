@@ -1,0 +1,92 @@
+{
+	"dragonestia.radiation": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/radiation/rad1",
+				"sounds/radiation/rad2",
+				"sounds/radiation/rad3",
+				"sounds/radiation/rad4"
+		]
+	},
+	"dragonestia.radio.message": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/radio/message1",
+				"sounds/radio/message2"
+		]
+	},
+	"dragonestia.radio.lost": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/radio/lost"
+		]
+	},
+	"dragonestia.radio.found": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/radio/found"
+		]
+	},
+	"dragonestia.rad.zelenka": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/rad/zelenka"
+		]
+	},
+	"dragonestia.rad.tablet": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/rad/tablet"
+		]
+	},
+	"dragonestia.rad.yodadulin": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/rad/yodadulin"
+		]
+	},
+	"dragonestia.horror.laugh": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/horror/laugh"
+		]
+	},
+	"dragonestia.horror.crying": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/horror/crying"
+		]
+	},
+	"dragonestia.horror.heartbeat": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/horror/heartbeat"
+		]
+	},
+	"dragonestia.storm.wind": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/storm/wind1",
+				"sounds/storm/wind2",
+				"sounds/storm/wind3"
+		]
+	},
+	"dragonestia.music.lobby": {
+		"category": "music",
+		"min_distance": 100.0,
+			"sounds" : [
+				"sounds/music/lobby"
+		]
+	}
+}

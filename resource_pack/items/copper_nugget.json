@@ -1,0 +1,6 @@
+{"format_version": "1.16.0", 
+"minecraft:item": 
+{"description": 
+{"identifier": "dragonestia:copper_nugget"}, 
+"components": {"minecraft:icon": "dragonestia:copper_nugget", 
+"minecraft:hand_equipped": false}}}

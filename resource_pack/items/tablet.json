@@ -1,0 +1,6 @@
+{"format_version": "1.16.0", 
+"minecraft:item": 
+{"description": 
+{"identifier": "dragonestia:tablet"}, 
+"components": {"minecraft:icon": "dragonestia:tablet", 
+"minecraft:hand_equipped": false}}}

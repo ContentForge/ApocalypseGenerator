@@ -1,0 +1,6 @@
+{"format_version": "1.16.0", 
+"minecraft:item": 
+{"description": 
+{"identifier": "dragonestia:yodadulin"}, 
+"components": {"minecraft:icon": "dragonestia:yodadulin", 
+"minecraft:hand_equipped": false}}}
