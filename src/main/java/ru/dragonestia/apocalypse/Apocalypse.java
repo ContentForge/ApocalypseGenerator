@@ -26,6 +26,7 @@ import ru.dragonestia.apocalypse.listener.MainListener;
 import ru.dragonestia.apocalypse.network.CameraShakePacket;
 import ru.dragonestia.apocalypse.player.PlayerData;
 import ru.dragonestia.apocalypse.player.PlayerManager;
+import ru.dragonestia.apocalypse.shop.TicketEconomyInstance;
 import ru.dragonestia.apocalypse.storms.GlobalEvents;
 import ru.dragonestia.apocalypse.task.IllnessTask;
 import ru.dragonestia.apocalypse.task.LobbyMusicTask;
@@ -33,6 +34,7 @@ import ru.dragonestia.apocalypse.task.TeleportingTask;
 import ru.dragonestia.apocalypse.workbench.BookWorkbench;
 import ru.dragonestia.apocalypse.workbench.ClassicWorkbench;
 import ru.dragonestia.expo.Expo;
+import ru.dragonestia.expo.shop.EconomyManager;
 import ru.dragonestia.expo.workbench.WorkbenchManager;
 import ru.jl1mbo.scoreboard.manager.ScoreboardManager;
 
@@ -166,6 +168,9 @@ public class Apocalypse extends PluginBase {
         WorkbenchManager workbenchManager = Expo.getInstance().getWorkbenchManager();
         workbenchManager.registerWorkbench(new ClassicWorkbench(this));
         workbenchManager.registerWorkbench(new BookWorkbench());
+
+        EconomyManager economyManager = Expo.getInstance().getEconomyManager();
+        economyManager.registerEconomyInstance(TicketEconomyInstance.ID, new TicketEconomyInstance(playerManager));
     }
 
     @Override
