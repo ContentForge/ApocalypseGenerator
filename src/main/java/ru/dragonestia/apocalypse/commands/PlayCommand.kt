@@ -43,9 +43,9 @@ class PlayCommand(private val main: Apocalypse) : Command("play", "Начать 
                 player.isNameTagAlwaysVisible = false
                 player.extinguish()
                 player.setGamemode(0)
-                player.sendMessage("§eТелепортирование...")
 
                 data.removeBed()
+                main.lobbyMusicTask.leaveFromLobby(player)
 
                 player.addEffect(Effect.getEffect(Effect.NIGHT_VISION).setDuration(600).setVisible(false))
                 player.addEffect(Effect.getEffect(Effect.BLINDNESS).setDuration(600).setVisible(false))
@@ -66,7 +66,6 @@ class PlayCommand(private val main: Apocalypse) : Command("play", "Начать 
         player.isNameTagAlwaysVisible = false
         player.extinguish()
         player.setGamemode(0)
-        player.sendMessage("§eТелепортирование...")
         player.addEffect(Effect.getEffect(Effect.NIGHT_VISION).setDuration(600).setVisible(false))
         player.addEffect(Effect.getEffect(Effect.BLINDNESS).setDuration(600).setVisible(false))
 
