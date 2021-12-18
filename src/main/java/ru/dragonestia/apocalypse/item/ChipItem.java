@@ -5,7 +5,7 @@ import ru.dragonestia.expo.item.AdvItem;
 
 public class ChipItem extends Item implements AdvItem {
 
-    public ChipItem(int meta, int count) {
+    public ChipItem(Integer meta, int count) {
         super(ApocalypseID.CHIP, 0, count, "Chip");
     }
 

@@ -11,9 +11,9 @@ public class Bed {
     private int z;
 
     public Bed(Vector3 pos){
-        x = pos.getFloorX();
-        y = pos.getFloorY();
-        z = pos.getChunkZ();
+        x = (int) pos.x;
+        y = (int) pos.y;
+        z = (int) pos.z;
     }
 
     public Position getPosition(){
