@@ -11,10 +11,4 @@ public interface UsableItem {
 
     void use(Player player);
 
-    default boolean onClickAir(Player player, Vector3 ignore) {
-        use(player);
-        if(player.isCreative()) setCount(getCount() - 1);
-        return true;
-    }
-
 }

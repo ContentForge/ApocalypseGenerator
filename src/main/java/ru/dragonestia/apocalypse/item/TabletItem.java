@@ -2,6 +2,7 @@ package ru.dragonestia.apocalypse.item;
 
 import cn.nukkit.Player;
 import cn.nukkit.item.Item;
+import cn.nukkit.math.Vector3;
 import cn.nukkit.potion.Effect;
 import ru.dragonestia.apocalypse.Apocalypse;
 import ru.dragonestia.apocalypse.player.PlayerData;
@@ -21,6 +22,13 @@ public class TabletItem extends Item implements AdvItem, UsableItem {
     @Override
     public String getIcon() {
         return "textures/items/rad/tablet";
+    }
+
+    @Override
+    public boolean onClickAir(Player player, Vector3 directionVector) {
+        use(player);
+        if(!player.isCreative()) count--;
+        return true;
     }
 
     @Override
