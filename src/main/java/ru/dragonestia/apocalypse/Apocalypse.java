@@ -83,7 +83,7 @@ public class Apocalypse extends PluginBase {
         Item.list[ApocalypseID.YODADULIN] = YodadulinItem.class;
         Item.list[ApocalypseID.TABLET] = TabletItem.class;
         Item.list[ApocalypseID.BED] = BedItem.class;
-        Item.list[ApocalypseID.FIRST_AID_KIT] = BedItem.class;
+        Item.list[ApocalypseID.FIRST_AID_KIT] = FirstAidKitItem.class;
 
         Biome.biomes[ApocalypseGenerator.ASH_BIOME] = new AshBiome();
         Biome.biomes[ApocalypseGenerator.FIRE_BIOME] = new FireBiome();
