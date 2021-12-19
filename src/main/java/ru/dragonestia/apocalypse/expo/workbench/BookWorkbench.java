@@ -1,4 +1,4 @@
-package ru.dragonestia.apocalypse.workbench;
+package ru.dragonestia.apocalypse.expo.workbench;
 
 import cn.nukkit.block.Block;
 import ru.dragonestia.expo.player.PlayerData;

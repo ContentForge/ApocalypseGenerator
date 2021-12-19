@@ -1,4 +1,4 @@
-package ru.dragonestia.apocalypse.shop;
+package ru.dragonestia.apocalypse.expo.shop;
 
 import cn.nukkit.Player;
 import ru.dragonestia.apocalypse.player.PlayerManager;

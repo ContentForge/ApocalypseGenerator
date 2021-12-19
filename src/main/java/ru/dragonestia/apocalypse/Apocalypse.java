@@ -13,6 +13,9 @@ import cn.nukkit.level.biome.Biome;
 import cn.nukkit.level.generator.Generator;
 import cn.nukkit.plugin.PluginBase;
 import ru.dragonestia.apocalypse.commands.*;
+import ru.dragonestia.apocalypse.expo.button.PlayButtonInstance;
+import ru.dragonestia.apocalypse.expo.button.RepairRadioButtonInstance;
+import ru.dragonestia.apocalypse.expo.condition.IsRadioBrokenCondition;
 import ru.dragonestia.apocalypse.item.*;
 import ru.dragonestia.apocalypse.level.ApocalypseGenerator;
 import ru.dragonestia.apocalypse.level.biome.ApocalypseBiome;
@@ -26,14 +29,16 @@ import ru.dragonestia.apocalypse.listener.MainListener;
 import ru.dragonestia.apocalypse.network.CameraShakePacket;
 import ru.dragonestia.apocalypse.player.PlayerData;
 import ru.dragonestia.apocalypse.player.PlayerManager;
-import ru.dragonestia.apocalypse.shop.TicketEconomyInstance;
+import ru.dragonestia.apocalypse.expo.shop.TicketEconomyInstance;
 import ru.dragonestia.apocalypse.storms.GlobalEvents;
 import ru.dragonestia.apocalypse.task.IllnessTask;
 import ru.dragonestia.apocalypse.task.LobbyMusicTask;
 import ru.dragonestia.apocalypse.task.TeleportingTask;
-import ru.dragonestia.apocalypse.workbench.BookWorkbench;
-import ru.dragonestia.apocalypse.workbench.ClassicWorkbench;
+import ru.dragonestia.apocalypse.expo.workbench.BookWorkbench;
+import ru.dragonestia.apocalypse.expo.workbench.ClassicWorkbench;
 import ru.dragonestia.expo.Expo;
+import ru.dragonestia.expo.condition.ConditionManager;
+import ru.dragonestia.expo.dialogue.DialogueManager;
 import ru.dragonestia.expo.shop.EconomyManager;
 import ru.dragonestia.expo.workbench.WorkbenchManager;
 import ru.jl1mbo.scoreboard.manager.ScoreboardManager;
@@ -78,6 +83,7 @@ public class Apocalypse extends PluginBase {
         Item.list[ApocalypseID.YODADULIN] = YodadulinItem.class;
         Item.list[ApocalypseID.TABLET] = TabletItem.class;
         Item.list[ApocalypseID.BED] = BedItem.class;
+        Item.list[ApocalypseID.FIRST_AID_KIT] = BedItem.class;
 
         Biome.biomes[ApocalypseGenerator.ASH_BIOME] = new AshBiome();
         Biome.biomes[ApocalypseGenerator.FIRE_BIOME] = new FireBiome();
@@ -138,7 +144,6 @@ public class Apocalypse extends PluginBase {
                 new SendRadioCommand(this),
                 new StormCommand(globalEvents),
                 new JokeCommand(playerManager),
-                new PlayCommand(this),
                 new SpawnCommand(this)
         ));
 
@@ -165,12 +170,21 @@ public class Apocalypse extends PluginBase {
 
         getServer().getNetwork().setName("§l[§cD§f] §4Apоcalypse");
 
-        WorkbenchManager workbenchManager = Expo.getInstance().getWorkbenchManager();
+        Expo expo = Expo.getInstance();
+
+        WorkbenchManager workbenchManager = expo.getWorkbenchManager();
         workbenchManager.registerWorkbench(new ClassicWorkbench(this));
         workbenchManager.registerWorkbench(new BookWorkbench());
 
-        EconomyManager economyManager = Expo.getInstance().getEconomyManager();
+        EconomyManager economyManager = expo.getEconomyManager();
         economyManager.registerEconomyInstance(TicketEconomyInstance.ID, new TicketEconomyInstance(playerManager));
+
+        DialogueManager dialogueManager = expo.getDialogueManager();
+        dialogueManager.registerButtonInstance(new PlayButtonInstance(this));
+        dialogueManager.registerButtonInstance(new RepairRadioButtonInstance(this));
+
+        ConditionManager conditionManager = expo.getConditionManager();
+        conditionManager.registerCondition(new IsRadioBrokenCondition(this));
     }
 
     @Override

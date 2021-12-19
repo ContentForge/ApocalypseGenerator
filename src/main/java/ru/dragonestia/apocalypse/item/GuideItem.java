@@ -3,7 +3,7 @@ package ru.dragonestia.apocalypse.item;
 import cn.nukkit.Player;
 import cn.nukkit.item.Item;
 import cn.nukkit.math.Vector3;
-import ru.dragonestia.apocalypse.workbench.BookWorkbench;
+import ru.dragonestia.apocalypse.expo.workbench.BookWorkbench;
 import ru.dragonestia.expo.Expo;
 import ru.dragonestia.expo.item.AdvItem;
 
