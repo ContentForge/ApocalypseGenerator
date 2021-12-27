@@ -17,7 +17,7 @@ public class EclipseStorm extends GlobalEventBase {
 
     @Override
     public int getPeriod() {
-        return 4 * 60;
+        return 7 * 60;
     }
 
     @Override
