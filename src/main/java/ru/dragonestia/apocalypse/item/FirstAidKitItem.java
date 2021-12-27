@@ -21,7 +21,7 @@ public class FirstAidKitItem extends Item implements AdvItem, UsableItem {
 
     @Override
     public String getIcon() {
-        return "textures/items/med_kit"; //TODO
+        return "textures/items/med_kit";
     }
 
     @Override
@@ -40,7 +40,7 @@ public class FirstAidKitItem extends Item implements AdvItem, UsableItem {
     public void use(Player player){
         PlayerData playerData = Apocalypse.getInstance().getPlayerManager().get(player);
 
-        player.addEffect(Effect.getEffect(Effect.HEALING).setDuration(20 * 60).setVisible(false));
+        player.addEffect(Effect.getEffect(Effect.REGENERATION).setDuration(20 * 60).setVisible(false));
         playerData.playSound("dragonestia.rad.yodadulin", 0.3f, 1f);
     }
     
