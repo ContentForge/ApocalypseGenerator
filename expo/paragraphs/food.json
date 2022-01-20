@@ -1,0 +1,11 @@
+{
+  "id": "food",
+  "name": "Пещерные грибочки-мухоморы",
+  "text": "Рассказать про грибные пещеры",
+  "icon": "textures/ui/dragonestia/food",
+  "conditions": [],
+  "depend": "start",
+  "dev": false,
+  "workbench": "book",
+  "quest": false
+}

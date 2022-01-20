@@ -1,0 +1,39 @@
+{
+	"id": "golovin_antishop",
+	"text": [
+			"Показывай свою руду, карточки у меня всегда на готове."
+	],
+	"buttons": [
+		{
+			"text": "железная",
+			"action": "shop ticket sell 1 10009",
+      "conditions":[]
+		},
+    {
+      "text": "медная",
+      "action": "shop ticket sell 1 10010",
+      "conditions":[]
+    },
+    {
+      "text": "серная",
+      "action": "shop ticket sell 2 10009",
+      "conditions":[]
+    },
+    {
+      "text": "редповдер",
+      "action": "shop ticket sell 1 331",
+      "conditions":[]
+    },
+    {
+      "text": "диамонд",
+      "action": "shop ticket sell 70 264",
+      "conditions":[]
+    },
+    {
+      "text": "До встречи!",
+      "action": "none Удачи!",
+      "conditions":[]
+    }
+	],
+	"conditions":[]
+}

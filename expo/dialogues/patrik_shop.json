@@ -1,0 +1,34 @@
+{
+	"id": "patrik_shop",
+	"text": [
+			"Налетай!"
+	],
+	"buttons": [
+		{
+			"text": "",
+			"action": "shop ticket buy 8 10001",
+      "conditions":[]
+		},
+    {
+      "text": "",
+      "action": "shop ticket buy 15 10002",
+      "conditions":[]
+    },
+    {
+      "text": "",
+      "action": "shop ticket buy 4 10003",
+      "conditions":[]
+    },
+    {
+      "text": "",
+      "action": "shop ticket buy 1 10015 0 4",
+      "conditions":[]
+    },
+    {
+      "text": "",
+      "action": "shop ticket buy 1 10014 0 4",
+      "conditions":[]
+    }
+	],
+	"conditions":[]
+}

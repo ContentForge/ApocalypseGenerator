@@ -1,0 +1,19 @@
+{
+	"id": "haron_frompatrik",
+	"text": [
+		"Ну что, уже поговорил с Мельником?"
+	],
+	"buttons": [
+		{
+			"text": "Еще нет.",
+			"action": "none"
+		},
+		{
+			"text": "Да. Я уже готов выдвигаться на поверхность.",
+			"action": "dialogue haron_letsgo"
+		}
+	],
+	"conditions": [
+		"dialogue patrik_ok"
+	]
+}

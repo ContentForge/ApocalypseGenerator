@@ -1,0 +1,15 @@
+{
+	"id": "patrik_none",
+	"text": [
+		"Я тут занят малёха, попозже приходи"
+	],
+	"buttons": [
+		{
+			"text": "Хорошо",
+			"action": "none"
+		}
+	],
+	"conditions": [
+		"not_read melnik_andalso"
+	]
+}

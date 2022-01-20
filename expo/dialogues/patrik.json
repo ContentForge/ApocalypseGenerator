@@ -1,0 +1,30 @@
+{
+  "id": "patrik",
+  "text": [
+    "Дякую! Шо таке?"
+  ],
+  "buttons": [
+    {
+      "text": "Привет. покажи ассортимент.",
+      "action": "dialogue patrik_shop"
+    },
+    {
+      "text": "У меня сломалось радио. Можешь починить?",
+      "action": "repair_radio",
+      "conditions": [
+        "radio_broken"
+      ]
+    },
+    {
+      "text": "Просто поздороваться зашел.",
+      "action": "question Ну привет, так сказать."
+    },
+    {
+      "text": "Я пойду пожалуй",
+      "action": "none Ну ты заглядывай. Тут весело бывает!"
+    }
+  ],
+  "conditions": [
+    "dialogue patrik_ok"
+  ]
+}

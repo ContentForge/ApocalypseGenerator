@@ -1,0 +1,16 @@
+{
+	"id": "patrik_welcome",
+	"text": [
+		"Доброго ранку, сталкер! За рацией пришел поди? Видел, ты к Мельникову заходил"
+	],
+	"buttons": [
+		{
+			"text": "Здравствуй, абсолютно верно.",
+			"action": "dialogue patrik_isgiving"
+		}
+	],
+	"conditions": [
+		"dialogue melnik_andalso",
+		"not_read patrik_ok"
+	]
+}

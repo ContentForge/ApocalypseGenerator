@@ -1,0 +1,23 @@
+{
+	"id": "haron_frommelnik",
+	"text": [
+		"Ну что, уже поговорил с Мельником?"
+	],
+	"buttons": [
+		{
+			"text": "Да. Я уже готов выдвигаться на поверхность.",
+			"action": "dialogue haron_forgot",
+			"conditions": [
+				"dialogue melnik_andalso"
+			]
+		},
+		{
+			"text": "Еще нет.",
+			"action": "none Так иди скорее к нему!"
+		}
+	],
+	"conditions": [
+		"not_read haron_forgot",
+		"not_read patrik_welcome"
+	]
+}

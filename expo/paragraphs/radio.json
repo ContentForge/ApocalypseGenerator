@@ -1,0 +1,11 @@
+{
+  "id": "radio",
+  "name": "Радио-балабол",
+  "text": "",
+  "icon": "textures/ui/dragonestia/radio",
+  "conditions": [],
+  "depend": "start",
+  "dev": false,
+  "workbench": "book",
+  "quest": false
+}

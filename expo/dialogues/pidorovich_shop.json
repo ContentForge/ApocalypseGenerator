@@ -1,0 +1,54 @@
+{
+	"id": "pidorovich_shop",
+	"text": [
+			"Выбирай, что душе угодно!"
+	],
+	"buttons": [
+		{
+			"text": "ткань",
+			"action": "shop ticket buy 1 10005",
+      "conditions":[]
+		},
+    {
+			"text": "пластик",
+			"action": "shop ticket buy 4 10006",
+      "conditions":[]
+		},
+    {
+      "text": "спальник",
+      "action": "shop ticket buy 3 10019",
+      "conditions":[]
+    },
+    {
+      "text": "кирка железная",
+      "action": "shop ticket buy 8 257",
+      "conditions":[]
+    },
+    {
+      "text": "тнт",
+      "action": "shop ticket buy 3 46",
+      "conditions":[]
+    },
+    {
+      "text": "редповдер",
+      "action": "shop ticket buy 2 331",
+      "conditions":[]
+    },
+    {
+      "text": "ганповдер",
+      "action": "shop ticket buy 3 289",
+      "conditions":[]
+    },
+    {
+      "text": "наковальня",
+      "action": "shop ticket buy 32 145",
+      "conditions":[]
+    },
+    {
+      "text": "котел",
+      "action": "shop ticket buy 8 380",
+      "conditions":[]
+    }
+	],
+	"conditions":[]
+}

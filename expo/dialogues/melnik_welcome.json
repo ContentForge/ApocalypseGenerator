@@ -1,0 +1,21 @@
+{
+	"id": "melnik_welcome",
+	"text": [
+		"Внимательно слушаю."
+	],
+	"buttons": [
+		{
+			"text": "Ну-у... м-м-м... я...",
+			"action": "none Подходи, когда будет есть что сказать или спросить что-то дельное"
+		},
+		{
+			"text": "Здравия желаю, полковник Мельников. Я от Харона.",
+			"action": "dialogue melnik_hello",
+			"conditions": [
+				"dialogue haron_tomelnik",
+				"not_read melnik_andalso"
+			]
+		}
+	],
+	"conditions": []
+}

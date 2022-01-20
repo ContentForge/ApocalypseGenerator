@@ -1,0 +1,19 @@
+{
+	"id": "melnik_playerforgot",
+	"text": [
+		"Что-то ещё, {player}?"
+	],
+	"buttons": [
+		{
+			"text": "Я забыл, что нужно сделать.",
+			"action": "dialogue melnik_playerforgot"
+		},
+		{
+			"text": "Нет, ничего.",
+			"action": "none"
+		}
+	],
+	"conditions": [
+		"not_read patrik_welcome"
+	]
+}

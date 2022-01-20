@@ -1,0 +1,29 @@
+{
+  "id": "suslov_shop",
+  "text": [
+    "Вот, пожалуйста."
+  ],
+  "buttons": [
+    {
+      "text": "",
+      "action": "shop ticket buy 10 10017",
+      "conditions": []
+    },
+    {
+      "text": "",
+      "action": "shop ticket buy 45 10016",
+      "conditions": []
+    },
+    {
+      "text": "",
+      "action": "shop ticket buy 6 10020",
+      "conditions": []
+    },
+    {
+      "text": "Спасибо, я передумал.",
+      "action": "none Если опять надумаешь что-нибудь купить - я всегда тут!",
+      "conditions": []
+    }
+  ],
+  "conditions": []
+}

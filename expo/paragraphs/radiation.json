@@ -1,0 +1,11 @@
+{
+  "id": "radiation",
+  "name": "Фонит, что даже можно яйца запекать",
+  "text": "Ну радиация пиздец. F",
+  "icon": "textures/ui/dragonestia/server",
+  "conditions": [],
+  "depend": "start",
+  "dev": false,
+  "workbench": "book",
+  "quest": false
+}

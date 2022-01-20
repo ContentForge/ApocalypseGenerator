@@ -1,0 +1,19 @@
+{
+	"id": "pidorovich",
+	"text": [
+			"Здорова, сталкер! Поглазеть пришел или затариваться?"
+	],
+	"buttons": [
+		{
+			"text": "Затариваться.",
+			"action": "dialogue pidorovich_shop",
+      "conditions":[]
+		},
+    {
+      "text": "Поглазеть.",
+      "action": "none",
+      "conditions":[]
+    }
+	],
+	"conditions":[]
+}

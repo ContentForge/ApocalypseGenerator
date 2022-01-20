@@ -1,0 +1,34 @@
+{
+	"id": "sosik_shop",
+	"text": [
+			"Выбирай, дорогой! Всё, что хочешь, выбирай!"
+	],
+	"buttons": [
+		{
+			"text": "",
+			"action": "shop ticket buy 4 297",
+      		"conditions":[]
+		},
+		{
+			"text": "",
+			"action": "shop ticket buy 3 282",
+			"conditions":[]
+		},
+		{
+			"text": "",
+			"action": "shop ticket buy 1 39",
+			"conditions":[]
+		},
+		{
+			"text": "",
+			"action": "shop ticket buy 1 40",
+			"conditions":[]
+		},
+		{
+			"text": "",
+			"action": "shop ticket buy 2 373",
+			"conditions":[]
+		}
+	],
+	"conditions":[]
+}
